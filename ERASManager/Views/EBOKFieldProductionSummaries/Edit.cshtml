@@ -1,0 +1,166 @@
+﻿@model ERASManager.Models.EBOKTranformedData.EBOKFieldProductionSummary
+
+@{
+    ViewBag.Title = "EBOK Field Production Summary - Manual Entries";
+}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">EBOK Field Production Summary</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">EBOK Field Production Summary</a></li>
+                <li class="breadcrumb-item">Provide Manual Data</li>
+                <li class="breadcrumb-item active">Manual Entries</li>
+            </ol>
+        </div>
+        <div class="">
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">Back Allocation AssumedGOR</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.HiddenFor(model => model.IndicatorDate)
+                            @Html.HiddenFor(model => model.Uptime)
+                            @Html.HiddenFor(model => model.ProdOil)
+                            @Html.HiddenFor(model => model.CumProd)
+                            @Html.HiddenFor(model => model.ProdGas)
+                            @Html.HiddenFor(model => model.WFBAllocatedGas)
+                            @Html.HiddenFor(model => model.WFBFlaringUptime)
+                            @Html.HiddenFor(model => model.WFBProcessUptime)
+                            @Html.HiddenFor(model => model.Gaslift)
+                            @Html.HiddenFor(model => model.TotalProducedGas)
+                            @Html.HiddenFor(model => model.CumGas)
+                            @Html.HiddenFor(model => model.ProdWater)
+                            @Html.HiddenFor(model => model.CumWater)
+                            @Html.HiddenFor(model => model.EffluentOilInWater)
+                            @Html.HiddenFor(model => model.API)
+                            @Html.HiddenFor(model => model.ExportAPI)
+                            @Html.HiddenFor(model => model.ExportTemp)
+                            @Html.HiddenFor(model => model.ExportMetersReadingGross)
+                            @Html.HiddenFor(model => model.ExportMetersReadingNet)
+                            @Html.HiddenFor(model => model.FieldWaterCut)
+                            @Html.HiddenFor(model => model.ExportWaterCut)
+                            @Html.HiddenFor(model => model.Adjustment)
+                            @Html.HiddenFor(model => model.TotalMeteredGasFlared)
+                            @Html.HiddenFor(model => model.ViriniPremStockBalance)
+                            @Html.HiddenFor(model => model.BSW)
+                            @Html.HiddenFor(model => model.FieldGOR)
+                            @Html.HiddenFor(model => model.AdjustedFieldGOR)
+                            @Html.HiddenFor(model => model.WaterOverboardMOPU)
+                            @Html.HiddenFor(model => model.UllageMeasurement)
+                            @Html.HiddenFor(model => model.MOPUcorrectedmeterVariance)
+                            @Html.HiddenFor(model => model.BSWManual)
+                            @Html.HiddenFor(model => model.BSWAutosampler)
+                            @Html.HiddenFor(model => model.OffloadVolume)
+                            @Html.HiddenFor(model => model.OffloadBSW)
+                            @Html.HiddenFor(model => model.OffloadAPI)
+                            @Html.HiddenFor(model => model.Forecast)
+                            @Html.HiddenFor(model => model.IdealDayRate)
+                            @Html.HiddenFor(model => model.MarketExpectation)
+                            @Html.HiddenFor(model => model.Budget)
+                            @Html.HiddenFor(model => model.Deferment)
+                            @Html.HiddenFor(model => model.EstmatedProdGas)
+                            @Html.HiddenFor(model => model.TargetLC)
+                            @Html.HiddenFor(model => model.TargetHC)
+                            @Html.HiddenFor(model => model.TechnicalAllowable)
+                            @Html.HiddenFor(model => model.CommercialAllowable)
+                            @Html.HiddenFor(model => model.ActualProdGas)
+                            @Html.HiddenFor(model => model.WeeklyAverage)
+                            @Html.HiddenFor(model => model.ReportDate)
+                            @Html.HiddenFor(model => model.UploadTime)
+                            @Html.HiddenFor(model => model.TimeStamp)
+                            @Html.HiddenFor(model => model.DayOftheWeek)
+
+
+                            <div class="form-body">
+                                <h3 class="card-title">Add Daily Report</h3>
+                                <hr>
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Report Date</label>
+                                            @Html.EditorFor(model => model.IndicatorDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.IndicatorDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Water Overboard</label>
+                                            @Html.EditorFor(model => model.WaterOverboard, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WaterOverboard, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">
+                                                Pumpable cargo on Board (bbls)
+                                            </label>
+                                            @Html.EditorFor(model => model.PumpablecargoonBoard, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.PumpablecargoonBoard, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Free Water Received (FSO)
+                                            </label>
+                                            @Html.EditorFor(model => model.FreeWaterReceived, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.FreeWaterReceived, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <!--/span-->
+                                </div>
+
+
+
+                                <div class="form-actions">
+                                    <button type="submit" value="Save" class="btn btn-success"> <i class="fa fa-pencil"></i> Modify Record</button>
+                                    <button type="button" class="btn btn-inverse"><i class="fa fa-times"></i>Cancel</button>
+                                    <a href="@Url.Action("Index", "EBOKFieldProductionSummaries")" class="btn btn-info"><i class="fa fa-backward"></i> &nbsp;Back To List&nbsp; </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+
+        </div>
+    </div>
+
+

@@ -1,0 +1,519 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/assets/images/favicon.png">
+    <title>EBOK Report Analytics System ERAS - Oriental Energy Resource Limited</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    @RenderSection("pagecss", required: false)
+    <!-- morris CSS -->
+    <!-- Custom CSS -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="~/Content/css/colors/blue.css" id="theme" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border logo-center">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="10.130.64.115:91">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="~/Content/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="~/Content/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                            <!-- dark Logo text -->
+                            <img src="~/Content/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo text -->
+                            <img src="~/Content/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                        </span>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">Daily Report</li>
+                        <li class="two-column">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action("EBOKDailyProductionIdicatorDashboard", "Report", new { ReportName = "EBOKDailyProductionIdicatorDashboard", ReportDescription = "EBOK Daily Well Surveillance Dashboard", Width = 100, Height = 1200 })"> EBOK Daily Well Surveillance Dashboard </a></li>
+
+                                <li><a href="@Url.Action("GasAccountingRevDashboard", "Report", new { ReportName = "GasAccountingRevDashboard", ReportDescription = "EBOK Gas Accounting Dashboard", Width = 100, Height = 1200 })"> EBOK Gas Accounting Dashboard </a></li>
+
+                                <li><a href="@Url.Action("EBOKFieldSummaryDashboard", "Report", new { ReportName = "EBOKFieldSummaryDashboard", ReportDescription = "EBOK Field Summary Dashboard", Width = 100, Height = 1200 })"> EBOK Field Production Summary Dashboard </a></li>
+
+                                <li><a href="@Url.Action("BackAllocationActualGORReport", "Report", new { ReportName = "BackAllocationActualGORReport", ReportDescription = "BackAllocation Actual GOR Report", Width = 100, Height = 1200 })"> Water Injector Dashboard </a></li>
+
+                                <li><a href="@Url.Action("BackAllocationActualGORReport", "Report", new { ReportName = "BackAllocationActualGORReport", ReportDescription = "BackAllocation Actual GOR Report", Width = 100, Height = 1200 })"> Gas Injector Daily Indicator</a></li>
+
+                                <li><a href="@Url.Action("EBOKInjectivityIndex", "Report", new { ReportName = "EBOKInjectivityIndex", ReportDescription = "EBOK Injectivity Index Dashboard", Width = 100, Height = 1200 })"> EBOK Injectivity Index </a></li>
+
+                                <li><a href="@Url.Action("BackAllocationRsvDashboards", "Report", new { ReportName = "BackAllocationRsvDashboards", ReportDescription = "Back Allocation Reservoir Dashboard", Width = 100, Height = 1200 })"> Back Allocation Reservoir Dashboard </a></li>
+
+                                <li><a href="@Url.Action("BackAllocationDashboard", "Report", new { ReportName = "BackAllocationDashboard", ReportDescription = "Back Allocation Well Dashboard", Width = 100, Height = 1200 })"> Back Allocation Well Dashboard </a></li>
+
+                                <li><a href="@Url.Action("EBOKProductionSurveillance", "Report", new { ReportName = "EBOKProductionSurveillance", ReportDescription = "EBOK Production Surveillance Dashboard", Width = 100, Height = 1200 })"> EBOK Production Surveillance Dashboard </a></li>
+
+                                <li><a href="@Url.Action("FlowParameters", "Report", new { ReportName = "FlowParameters", ReportDescription = "Flow Parameters Dashboard", Width = 100, Height = 1200 })"> Flow Parameters Dashboard  </a></li>
+
+                                <li><a href="@Url.Action("GasTrend", "Report", new { ReportName = "GasTrend", ReportDescription = "Gas Trend Dashboard", Width = 100, Height = 1200 })"> Gas Trend Dashboard  </a></li>
+
+                                <li><a href="@Url.Action("PressurePlotTCM", "Report", new { ReportName = "PressurePlotTCM", ReportDescription = "Pressure Plot TCM Dashboard", Width = 100, Height = 1200 })"> Pressure Plot TCM Dashboard  </a></li>
+                            </ul>
+                        </li>
+                        <li class="three-column">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Raw Field Data</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action("Index", "DailyProductionSummaries")"> Daily Production Summary </a></li>
+                                <li><a href="@Url.Action("Index", "DailySafetySummaries")"> DailySafetySummary </a></li>
+                                <li><a href="@Url.Action("Index", "DownTimeLossReasons")"> Down Time Loss Reason </a></li>
+                                <li><a href="@Url.Action("Index", "OperationsSummaries")"> Operations Summary </a></li>
+                                <li><a href="@Url.Action("Index", "CFBWellData")"> CFB Well - Platform </a></li>
+                                <li><a href="@Url.Action("Index", "WFBWellData")"> WFB Well - Platform </a></li>
+                                <li><a href="@Url.Action("Index", "WellTestResults")"> Well Test Result </a></li>
+                                <li><a href="@Url.Action("Index", "CFBGasCompressions")"> CFB Gas Compression </a></li>
+                                <li><a href="@Url.Action("Index", "CFBGasLiftDatas")"> CFB Gas Lift </a></li>
+                                <li><a href="@Url.Action("Index", "WFBGasLiftData")"> WFB Gas Lift </a></li>
+                                <li><a href="@Url.Action("Index", "CFBProcessData_GasProduced")"> CFB Process Data - Gas Produced </a></li>
+                                <li><a href="@Url.Action("Index", "CFBProcessData_GasConsumed")"> CFB Process Data - Gas Consumed </a></li>
+                                <li><a href="@Url.Action("Index", "WFBProcessData_GasProduced")"> WFB Process Data - Gas Produced </a></li>
+                                <li><a href="@Url.Action("Index", "WFBProcessData_GasConsumed")"> WFB Process Data - Gas Consumed </a></li>
+                                <li><a href="@Url.Action("Index", "CFBWaterInjectorMeters")"> CFB Water Injection Meters </a></li>
+                                <li><a href="@Url.Action("Index", "WFBWaterInjectorMeters")"> WFB Water Injection Meters </a></li>
+                                <li><a href="@Url.Action("Index", "CFBWaterInjectors")"> CFB Water Injectors </a></li>
+                                <li><a href="@Url.Action("Index", "WIJManifoldMeters")"> WIJ Manifold Meters </a></li>
+                                <li><a href="@Url.Action("Index", "CFBCrudeExportMeters")"> CFB Crude Export Meters </a></li>
+                                <li><a href="@Url.Action("Index", "ProducedWaterData")"> Produced Water Data </a></li>
+                                <li><a href="@Url.Action("Index", "FSCargoWPData")"> FSO Cargo and PW Data </a></li>
+                                <li><a href="@Url.Action("Index", "FSOOILQUALITIES")"> Oil Quality to FSO </a></li>
+                                <li><a href="@Url.Action("Index", "CFBMaintenanceData")"> CFB Maintenance Data </a></li>
+                                <li><a href="@Url.Action("Index", "WFBMaintenanceData")"> WFB Maintenance Data </a></li>
+                                <li><a href="@Url.Action("Index", "CONSUMABLESANALYSIS")"> Consumables Reporting </a></li>
+                                <li><a href="@Url.Action("Index", "FSOSummaries")"> FSO Summary </a></li>
+                                <li><a href="@Url.Action("Index", "CFBSummaries")"> CFB Summary </a></li>
+                                <li><a href="@Url.Action("Index", "PlantOperationsReports")"> CFB Plant Operations </a></li>
+                                <li><a href="@Url.Action("Index", "PlannedMaintenance")"> CFB Planned Maintenance </a></li>
+                                <li><a href="@Url.Action("Index", "UnPlannedMaintenance")"> CFB UnPlanned Maintenance </a></li>
+                                <li><a href="@Url.Action("Index", "ProjectActivities")"> CFB Project Activities </a></li>
+                                <li><a href="@Url.Action("Index", "WFBGeneralReports")"> WFB Summary </a></li>
+                                <li><a href="@Url.Action("Index", "PendingProjectWorkReports")"> WFB Pending Project Work </a></li>
+                                <li><a href="@Url.Action("Index", "PendingMaintenanceReports")"> WFB Pending Maintenance </a></li>
+                                <li><a href="@Url.Action("Index", "UnPlannedMaintenanceReports")"> WFB Unplanned Maintenance </a></li>
+                                <li><a href="@Url.Action("Index", "InstrumentElectricals")"> WFB Instrument &Aacute; Electricals </a></li>
+                                <li><a href="@Url.Action("Index", "EHSSVEERS")"> EHSS VEERS Summary </a></li>
+                                <li><a href="@Url.Action("Index", "EHSSVIRINIS")"> EHSS VIRINIS Summary </a></li>
+                                <li><a href="@Url.Action("Index", "LastAvialableWellTests")"> Last Available Well Test </a></li>
+                                <li><a href="@Url.Action("Index", "WFBGasAllocations")"> WFB Gas Allocation </a></li>
+                                <li><a href="@Url.Action("Index", "E27GasLifts")"> E27 GasLifts </a></li>
+                                <li><a href="@Url.Action("Index", "WFBProcessData_Reading")"> WFB Process Data - Gas Consumers </a></li>
+                                <li><a href="@Url.Action("Index", "CFBProcessData_Reading")"> CFB Process Data - Gas Consumers </a></li>
+                                <li><a href="@Url.Action("Index", "ProductionPotential")"> Production Potential </a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Daily Reports</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Well Surveillance</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">Daily Well Surveillance</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "EKOBDailyProductionIndicators")"> Online Report</a></li>
+
+                                                <li><a href="@Url.Action("EBOKDailyProductionIndicator", "Report", new { ReportName = "EBOKDailyProductionIndicator", ReportDescription = "EBOK Daily Well Surveillance", Width = 100, Height = 1200 })"> Print Report</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">Flow Parameters</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "FlowParameters")">Online Report </a></li>
+
+                                                <li><a href="@Url.Action("FlowParameters", "Report", new { ReportName = "FlowParameters", ReportDescription = "Flow Parameters Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">EBOK Hall Plot</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "EBOKHallPlotDatas")"> Online Report </a></li>
+
+                                                <li><a href="@Url.Action("EBOKHallPlot", "Report", new { ReportName = "EBOKHallPlot", ReportDescription = "EBOK Hall Plot Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">EBOK Injectivity Index</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "EBOKInjectivityIndexes")"> Online Report </a></li>
+
+                                                <li><a href="@Url.Action("EBOKInjectivityIndex", "Report", new { ReportName = "EBOKInjectivityIndex", ReportDescription = "EBOK Injectivity Index Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">Pressure Plot TCM</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "PressurePlotTCMs")"> Online Report </a></li>
+
+                                                <li><a href="@Url.Action("PressurePlotTCM", "Report", new { ReportName = "PressurePlotTCM", ReportDescription = "Pressure Plot TCM Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Gas Accounting</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">Gas Injector Daily Indicators</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "GasInjectorDailyIndicators")"> Online Report </a></li>
+
+                                                <li><a href="@Url.Action("EBOKInjectivityIndex", "Report", new { ReportName = "EBOKInjectivityIndex", ReportDescription = "EBOK Injectivity Index Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">Gas Accounting</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "EBOKGasProductionSummaries")"> Online Report  </a></li>
+
+                                                <li><a href="@Url.Action("EBOKGasAccountingReport", "Report", new { ReportName = "EBOKGasAccountingReport", ReportDescription = "EBOK Gas Accounting Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">Gas Trend</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "GasTrends")"> Online report </a></li>
+
+                                                <li><a href="@Url.Action("GasTrend", "Report", new { ReportName = "GasTrend", ReportDescription = "Gas Trend Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+
+                                        
+                                    </ul>
+                                </li>
+
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Water Injector Report</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "WaterInjectorQualities")"> Water Injector Quality </a></li>
+                                        <li><a href="@Url.Action("Index", "WaterInjectorRateHeaders")"> Water Injector Summary </a></li>
+                                        <li><a href="@Url.Action("Index", "WaterInjectorRateLineItems")"> Water Injector Report </a></li>
+                                        <li><a href="@Url.Action("GasTrend", "Report", new { ReportName = "GasTrend", ReportDescription = "Gas Trend Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Production Reports</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">EBOK Field Summary</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "EBOKFieldProductionSummaries")"> Online Report </a></li>
+
+                                                <li><a href="@Url.Action("EBOKFieldSummaryReport", "Report", new { ReportName = "EBOKFieldSummaryReport", ReportDescription = "EBOK Field Summary Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="has-arrow " href="#" aria-expanded="false">EBOK Field Summary</a>
+                                            <ul aria-expanded="false" class="collapse">
+                                                <li><a href="@Url.Action("Index", "EBOKProductionSurveillances")"> Online Report </a></li>
+
+                                                <li><a href="@Url.Action("EBOKProductionSurveillance", "Report", new { ReportName = "EBOKProductionSurveillance", ReportDescription = "EBOK Production Surveillance", Width = 100, Height = 1200 })"> Print Report </a></li>
+                                            </ul>
+                                        </li>
+
+
+
+
+                                       
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Revised BackAllocation</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+                                <li><a href="@Url.Action("Index", "RBackAllocationMasters")"> Run BackAllocation </a></li>
+                                <li><a href="@Url.Action("Index", "RBK_TransactionalData")"> View BackAllocation Report </a></li>
+                                <li><a href="@Url.Action("BackAllocationSummaryReport", "Report", new { ReportName = "BackAllocationSummaryReport", ReportDescription = "Back Allocation Summary Report", Width = 100, Height = 1200 })"> BackAllocation Print Report </a></li>
+                            </ul>
+                        </li>
+                        <li class="three-column">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Back Allocation</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Qw</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationQws")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQwHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQwSummaries")"> Summary Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationQwReport", "Report", new { ReportName = "BackAllocationQwReport", ReportDescription = "Back Allocation Qw Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Qo</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationQoes")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQoHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQoSummaries")"> Summary Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationQoReport", "Report", new { ReportName = "BackAllocationQoReport", ReportDescription = "Back Allocation Qo Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Qoest</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationQoest")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQoestHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQoestSummaries")"> Summary Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationQoestReport", "Report", new { ReportName = "BackAllocationQoestReport", ReportDescription = "Back Allocation Qoest Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Qliq</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationQlinks")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQlinkHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQlinkSummaries")"> Summary Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationQliqReport", "Report", new { ReportName = "BackAllocationQliqReport", ReportDescription = "Back Allocation Qliq Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Qlest</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationQlests")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQlestHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationQlestReport", "Report", new { ReportName = "BackAllocationQlestReport", ReportDescription = "Back Allocation Qlest Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Qg Potential</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationQgPotentials")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQgPotentialHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQgPotentialSummaries")"> Summary Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationQgPotentialReport", "Report", new { ReportName = "BackAllocationQgPotentialReport", ReportDescription = "Back Allocation Qg Potential Report ", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Gas Allocation</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationGasAllocations")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationGasAllocationHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationGasAllocationSummaries")"> Summary Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationGasAllocationReport", "Report", new { ReportName = "BackAllocationGasAllocationReport", ReportDescription = "Back Allocation Gas Allocation Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Flow HRS</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationFlowHRS")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationUptimeReport", "Report", new { ReportName = "BackAllocationUptimeReport", ReportDescription = "Back Allocation Flow HRS", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation BSW</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationBSWs")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationBSWReport", "Report", new { ReportName = "BackAllocationBSWReport", ReportDescription = "Back Allocation BSW Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+
+
+
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation BOPD</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationBOPDs")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationBOPDReport", "Report", new { ReportName = "BackAllocationBOPDReport", ReportDescription = "Back Allocation BOPD Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation BLPD</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationBPLDs")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationBLPDReport", "Report", new { ReportName = "BackAllocationBLPDReport", ReportDescription = "Back Allocation BLPD Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Actual GOR</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationActualGORs")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationActualGORHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationActualGORSummaries")"> Summary Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationActualGORReport", "Report", new { ReportName = "BackAllocationActualGORReport", ReportDescription = "BackAllocation Actual GOR Report", Width = 100, Height = 1200 })"> Print Report </a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Assumed GOR</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationAssumedGORs")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationAssumedGORReport", "Report", new { ReportName = "BackAllocationAssumedGORReport", ReportDescription = "Back Allocation Assumed GOR Report", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a class="has-arrow " href="#" aria-expanded="false">Back Allocation Qg Actual</a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        <li><a href="@Url.Action("Index", "BackAllocationQgActuals")"> Online Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQgActualHeaders")"> Header Report </a></li>
+                                        <li><a href="@Url.Action("Index", "BackAllocationQgActualSummaries")"> Summary Report </a></li>
+                                        <li><a href="@Url.Action("BackAllocationQgActual", "Report", new { ReportName = "BackAllocationQgActual", ReportDescription = "Back Allocation Qg Actual", Width = 100, Height = 1200 })">  Print Report </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        @RenderBody()
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer"> © 2020 Oriental Energy Resource Limited </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="~/Content/assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/Content/assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/Content/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="~/Content/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="~/Content/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/Content/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="~/Content/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+
+    <script src="~/Content/js/custom.min.js"></script>
+    @RenderSection("pagescript", required: false)
+
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="~/Content/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+
+</html>

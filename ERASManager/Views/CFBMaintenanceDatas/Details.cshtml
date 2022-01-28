@@ -1,0 +1,90 @@
+﻿@model ERASManager.Models.EBOKDailyReport.CFBMaintenanceData
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CFBMaintenanceData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Parameters)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parameters)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DailyTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DailyTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cummulative)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cummulative)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

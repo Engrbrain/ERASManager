@@ -1,0 +1,152 @@
+﻿@model ERASManager.Models.EBOKTranformedData.GasInjectorDailyIndicators
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>GasInjectorDailyIndicators</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IndicatorDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndicatorDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChokeSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChokeSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uptime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uptime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Well)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Well)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompDischPress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompDischPress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GasInject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GasInject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IFLP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IFLP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IFLSkinTemp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IFLSkinTemp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ITHP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITHP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IBHP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IBHP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IBHT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IBHT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

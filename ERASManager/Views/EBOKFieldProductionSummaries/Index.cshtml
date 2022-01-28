@@ -1,0 +1,368 @@
+﻿@model IEnumerable<ERASManager.Models.EBOKTranformedData.EBOKFieldProductionSummary>
+
+@{
+    ViewBag.Title = "EBOK Field Production Summary - Index";
+}
+
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">EBOK Field Production Summary</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">EBOK Field Production Summary</li>
+                <li class="breadcrumb-item active">Data List</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">EBOK Field Production Summary</h4>
+                        <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print, Create New Daily Entry</h6>
+                        @using (Html.BeginForm("FilterReport", "EBOKFieldProductionSummaries", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary()
+                            <div class="row p-t-20">
+                                <div class="col-md-4">
+                                    <div class="form-group has-success">
+
+                                        <input type="date" name="StartDate" class="form-control" placeholder="Start Date" />
+                                        <small class="form-control-feedback">Start Date</small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-success">
+
+                                        <input type="date" name="EndDate" class="form-control" placeholder="End Date" />
+                                        <small class="form-control-feedback">End Date</small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-success"><i class='fa fa-filter'></i> Filter Report</button>
+                                </div>
+                                <!--/span-->
+                            </div>
+                        }
+
+                        <div class="table-responsive m-t-40" style="overflow-x: auto;">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Uptime</th>
+                                        <th>Prod Oil</th>
+                                        <th>Cum Prod</th>
+                                        <th>Prod Gas</th>
+                                        <th style="display:none">WFB Allocated Gas</th>
+                                        <th style="display:none">WFB Process Uptime</th>
+                                        <th style="display:none">WFB Flaring Uptime</th>
+                                        <th>Total Gas Lift</th>
+                                        <th>Total Produced Gas</th>
+                                        <th>Cum Gas</th>
+                                        <th>Prod Water</th>
+                                        <th>Cum Water</th>
+                                        <th>Effluent Oil-In-Water</th>
+                                        <th>API</th>
+                                        <th style="display:none">Export API</th>
+                                        <th>Export Temp</th>
+                                        <th>Export Meters Reading (Gross Crude Total)</th>
+                                        <th>Export Meters Reading (Net Crude Total)</th>
+                                        <th>Field Water Cut</th>
+                                        <th>Export Water Cut</th>
+                                        <th style="display:none">Pumpable cargo on Board (bbls)</th>
+                                        <th style="display:none">Adjustment</th>
+                                        <th style="display:none">Total Metered Gas</th>
+                                        <th>Virini Prem Stock Balance </th>
+                                        <th>BSW </th>
+                                        <th style="display:none">Field GOR </th>
+                                        <th>Field GOR </th> <!--This was formerly Adjusted field GOR -->
+                                        <th>Water Overboard </th>
+                                        <th>Free Water Received (FSO) </th>
+                                        <th>Water Overboard (MOPU)  </th>
+                                        <th>Ullage Measurement </th>
+                                        <th>MOPU corrected meter Variance(%) </th>
+                                        <th>BS&W (Manual) </th>
+                                        <th>BS&W (Autosampler) </th>
+                                        <th style="display:none">Offload Volume </th>
+                                        <th style="display:none">Offload BSW </th>
+                                        <th style="display:none">Offload API </th>
+                                        <th style="display:none">Forecast </th>
+                                        <th style="display:none">Ideal Day Rate</th>
+                                        <th style="display:none">Market Expectation</th>
+                                        <th style="display:none">Budget </th>
+                                        <th style="display:none">Deferment</th>
+                                        <th style="display:none">Estmated Prod Gas (GOR = 300scf/bbl)</th>
+                                        <th style="display:none">Target - LC</th>
+                                        <th style="display:none">Target - HC</th>
+                                        <th>Technical Allowable</th>
+                                        <th>Commercial Allowable</th>
+                                        <th style="display:none">Actual Prod Gas </th>
+                                        <th style="display:none">Weekly Average</th>
+                                        <th class="text-nowrap">Action</th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>(hh:mm)</th>
+                                        <th>(bbl)</th>
+                                        <th>(bbl)</th>
+                                        <th>(mmscf)</th>
+                                        <th style="display:none">(mmscf)</th>
+                                        <th style="display:none">(hrs)</th>
+                                        <th style="display:none">(hrs)</th>
+                                        <th>(mmscf)</th>
+                                        <th>(mmscf)</th>
+                                        <th>(mmscf)</th>
+                                        <th>(bbl)</th>
+                                        <th>(bbl)</th>
+                                        <th>(ppm)</th>
+                                        <th>(º)</th>
+                                        <th style="display:none">(bbl)</th>
+                                        <th>(oC)</th>
+                                        <th>(bbl)</th>
+                                        <th>(bbl)</th>
+                                        <th>(%)</th>
+                                        <th>(%)</th>
+                                        <th style="display:none">(bbl)</th>
+                                        <th style="display:none">(bbl)</th>
+                                        <th style="display:none"></th>
+                                        <th>(bbl)</th>
+                                        <th>(%)</th>
+                                        <th style="display:none">(scf/bbl)</th>
+                                        <th>(scf/bbl)</th>
+                                        <th>(bbl)</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>(bbl)</th>
+                                        <th></th>
+                                        <th>(%)</th>
+                                        <th>(%)</th>
+                                        <th style="display:none">(bbl)</th>
+                                        <th style="display:none">(%)</th>
+                                        <th style="display:none"></th>
+                                        <th style="display:none">(bopd)</th>
+                                        <th style="display:none">(bopd)</th>
+                                        <th style="display:none">(bopd)</th>
+                                        <th style="display:none">(bopd)</th>
+                                        <th style="display:none">(bopd)</th>
+                                        <th style="display:none"></th>
+                                        <th style="display:none"></th>
+                                        <th style="display:none"></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th style="display:none"></th>
+                                        <th style="display:none"></th>
+
+                                        <th class="text-nowrap"></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Uptime</th>
+                                        <th>Prod Oil</th>
+                                        <th>Cum Prod</th>
+                                        <th>Prod Gas</th>
+                                        <th style="display:none">WFB Allocated Gas</th>
+                                        <th style="display:none">WFB Process Uptime</th>
+                                        <th style="display:none">WFB Flaring Uptime</th>
+                                        <th>Total Gas Lift</th>
+                                        <th>Total Produced Gas</th>
+                                        <th>Cum Gas</th>
+                                        <th>Prod Water</th>
+                                        <th>Cum Water</th>
+                                        <th>Effluent Oil-In-Water</th>
+                                        <th>API</th>
+                                        <th style="display:none">Export API</th>
+                                        <th>Export Temp</th>
+                                        <th>Export Meters Reading (Gross Crude Total)</th>
+                                        <th>Export Meters Reading (Net Crude Total)</th>
+                                        <th>Field Water Cut</th>
+                                        <th>Export Water Cut</th>
+                                        <th style="display:none">Pumpable cargo on Board (bbls)</th>
+                                        <th style="display:none">Adjustment</th>
+                                        <th style="display:none">Total Metered Gas</th>
+                                        <th>Virini Prem Stock Balance </th>
+                                        <th>BSW </th>
+                                        <th style="display:none">Field GOR </th>
+                                        <th>Field GOR </th> <!--This was formerly Adjusted field GOR -->
+                                        <th>Water Overboard </th>
+                                        <th>Free Water Received (FSO) </th>
+                                        <th>Water Overboard (MOPU)  </th>
+                                        <th>Ullage Measurement </th>
+                                        <th>MOPU corrected meter Variance(%) </th>
+                                        <th>BS&W (Manual) </th>
+                                        <th>BS&W (Autosampler) </th>
+                                        <th style="display:none">Offload Volume </th>
+                                        <th style="display:none">Offload BSW </th>
+                                        <th style="display:none">Offload API </th>
+                                        <th style="display:none">Forecast </th>
+                                        <th style="display:none">Ideal Day Rate</th>
+                                        <th style="display:none">Market Expectation</th>
+                                        <th style="display:none">Budget </th>
+                                        <th style="display:none">Deferment</th>
+                                        <th style="display:none">Estmated Prod Gas (GOR = 300scf/bbl)</th>
+                                        <th style="display:none">Target - LC</th>
+                                        <th style="display:none">Target - HC</th>
+                                        <th>Technical Allowable</th>
+                                        <th>Commercial Allowable</th>
+                                        <th style="display:none">Actual Prod Gas </th>
+                                        <th style="display:none">Weekly Average</th>
+                                        <th class="text-nowrap">Action</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.IndicatorDate) </td>
+                                        <td>@Html.DisplayFor(modelItem => item.Uptime)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ProdOil)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CumProd)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ProdGas)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.WFBAllocatedGas)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.WFBProcessUptime)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.WFBFlaringUptime)</td>
+                                        <td> @Html.DisplayFor(modelItem => item.Gaslift)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.TotalProducedGas)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CumGas)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ProdWater)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CumWater)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EffluentOilInWater)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.API)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.ExportAPI)</td>
+                                        <td> @Html.DisplayFor(modelItem => item.ExportTemp)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ExportMetersReadingGross)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ExportMetersReadingNet)</td>
+                                        <td> @Html.DisplayFor(modelItem => item.FieldWaterCut)</td>
+                                        <td> @Html.DisplayFor(modelItem => item.ExportWaterCut)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.PumpablecargoonBoard)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.Adjustment)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.TotalMeteredGasFlared)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.ViriniPremStockBalance)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.BSW)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.FieldGOR)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AdjustedFieldGOR)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.WaterOverboard)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.FreeWaterReceived)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.WaterOverboardMOPU)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.UllageMeasurement)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MOPUcorrectedmeterVariance)</td>
+                                        <td> @Html.DisplayFor(modelItem => item.BSWManual)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.BSWAutosampler)</td>
+                                        <td style="display:none"> @Html.DisplayFor(modelItem => item.OffloadVolume)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.OffloadBSW)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.OffloadAPI)</td>
+                                        <td style="display:none"> @Html.DisplayFor(modelItem => item.Forecast)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.IdealDayRate)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.MarketExpectation)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.Budget)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.Deferment)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.EstmatedProdGas)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.TargetLC)</td>
+                                        <td style="display:none">@Html.DisplayFor(modelItem => item.TargetHC)</td>
+                                        <td> @Html.DisplayFor(modelItem => item.TechnicalAllowable)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CommercialAllowable) </td>
+                                        <td style="display:none"> @Html.DisplayFor(modelItem => item.ActualProdGas)</td>
+                                        <td style="display:none"> @Html.DisplayFor(modelItem => item.WeeklyAverage)</td>
+
+                                        <td>
+                                            <a title="Modify EBOK Field Production Summary" href="@Url.Action("Edit", "EBOKFieldProductionSummaries", new { id = item.Id})" class="btn btn-default btn-rounded btn-condensed btn-sm"><i class='fa fa-pencil'></i></a>
+                                            <a title="View EBOK Field Production Summary" href="@Url.Action("Details", "EBOKFieldProductionSummaries", new { id = item.Id})" class="btn btn-default btn-rounded btn-condensed btn-sm"><i class='fa fa-desktop'></i></a>
+                                            <a title="Delete EBOK Field Production Summary" href="@Url.Action("Delete", "EBOKFieldProductionSummaries", new { id = item.Id})" class="btn btn-default btn-rounded btn-condensed btn-sm"><i class='fa fa-times'></i></a>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        @section pagescript
+            {
+            <!-- This is data table -->
+            <script src="~/Content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+            <!-- start - This is for export functionality only -->
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+            <!-- end - This is for export functionality only -->
+            <script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function(group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    $('#example23').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+            </script>
+        }

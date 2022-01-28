@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">EBOK Report Analytics System ERAS v1.0</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Welcome Screen</li>
+            </ol>
+        </div> <!--This is my name-->
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        
+        <!-- Row -->
+
+        <div class="row">
+
+            <img src="~/Content/assets/images/PIC HOMEPAGE WEB.jpg" width="100%" height="700px" align="middle" />
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+
+
+        @section pagescript
+            {
+            <!-- This page plugins -->
+            <!-- ============================================================== -->
+            <!--sparkline JavaScript -->
+            <script src="~/Content/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+            <!--morris JavaScript -->
+            <script src="~/Content/assets/plugins/raphael/raphael-min.js"></script>
+            <script src="~/Content/assets/plugins/morrisjs/morris.min.js"></script>
+            <!-- Chart JS -->
+            <script src="~/Content/js/dashboard1.js"></script>
+        }

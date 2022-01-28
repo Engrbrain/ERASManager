@@ -1,0 +1,816 @@
+﻿@model IEnumerable<ERASManager.Models.EBOKTranformedData.GasInjectorDailyIndicators>
+@{
+    /**/
+
+    ViewBag.Title = "GasInjectorDailyIndicatorDashboard";
+}
+
+@section pagecss
+            {
+    <!-- chartist CSS -->
+    <link href="~/Content/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/Content/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="~/Content/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="~/Content/assets/plugins/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom CSS -->
+}
+
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Gas Injector Daily Indicator</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Gas Injector Daily Indicator</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-9 col-xlg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap">
+                            <div>
+                                <h4 class="card-title">Gas Injector Analytics</h4>
+                                <h6 class="card-subtitle">Overview of Monthly Gas Injector Analytics</h6>
+                            </div>
+                            <div class="ml-auto align-self-center">
+                                <ul class="list-inline m-b-0">
+                                    <li>
+                                        <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>IFLP</h6>
+                                    </li>
+                                    <li>
+                                        <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10"></i>ITHP</h6>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="campaign ct-charts" style="height:305px!important;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Uptime</h4>
+                        <div class="d-flex">
+                            <div class="align-self-center">
+                                <h4 class="font-medium m-b-0"><i class="ti-angle-up text-success"></i>  @ViewBag.dUptime</h4>
+                            </div>
+                            <div class="ml-auto">
+                                <div id="spark8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Gas Inject</h4>
+                        <div class="d-flex">
+                            <div class="align-self-center">
+                                <h4 class="font-medium m-b-0"><i class="ti-angle-down text-danger"></i>  @ViewBag.dGasInject</h4>
+                            </div>
+                            <div class="ml-auto">
+                                <div id="spark9"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">IBHP</h4>
+                        <div class="d-flex">
+                            <div class="align-self-center">
+                                <h4 class="font-medium m-b-0"><i class="ti-angle-up text-success"></i> @ViewBag.dIBHP</h4>
+                            </div>
+                            <div class="ml-auto">
+                                <div id="spark10"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block">
+                            <h4 class="card-title">Gas Inject By Uptime</h4>
+                            <div class="ml-auto">
+                                <select class="custom-select">
+                                    <option selected="">EBOK 9 Gas Inject</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-responsive m-t-20">
+                            <table class="table nowrap stylish-table">
+                                <thead>
+                                    <tr>
+                                        <th>Report Date</th>
+                                        <th>Gas Inject</th>
+                                        <th>Uptime</th>
+                                        <th> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <i class="icon-calender"></i>
+                                                <span class="country-name">@Html.DisplayFor(modelItem => item.IndicatorDate)</span>
+                                            </td>
+                                            <td>@Html.DisplayFor(modelItem => item.GasInject)</td>
+                                            <td>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-danger " role="progressbar" aria-valuenow=@Html.DisplayFor(modelItem => item.GasInject) aria-valuemin="0" aria-valuemax="24" style="width:50%; height:6px;"> <span class="sr-only">@Html.DisplayFor(modelItem => item.GasInject)</span></div>
+                                                </div>
+                                            </td>
+                                            <td>@Html.DisplayFor(modelItem => item.GasInject)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-4 col-xlg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">IFLP</h5>
+                        <div class="text-center">
+                            <input data-plugin="knob" data-width="120" data-height="120" data-linecap=round data-fgColor="#01c0c8" value=@ViewBag.dIFLP data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">ITHP</h5>
+                        <div class="text-center">
+                            <input data-plugin="knob" data-width="120" data-height="120" data-linecap=round data-fgColor="#fb9678" value=@ViewBag.dITHP data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".2" />
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">IBHT</h5>
+                        <div class="text-center">
+                            <input data-plugin="knob" data-width="120" data-height="120" data-linecap=round data-fgColor="#ffbc34" value=@ViewBag.dIBHT data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-xlg-9">
+                <div class="card">
+                    <div class="card-body" style="display:none">
+                        <h4 class="card-title">Total Visits</h4>
+                        <div id="visitfromworld" style="width:100%!important; height:430px"></div>
+                    </div>
+
+                    <div class="card-body">
+                        <h4 class="card-title">IFLP/ITHP/IBHP</h4>
+                        <div class="ct-svg-chart" style="width:100%!important; height: 500px;"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-4 col-xlg-3">
+                <div class="card card-inverse card-info">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="m-r-20 align-self-center">
+                                <h1 class="text-white"><i class="ti-light-bulb"></i></h1>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Choke Size</h3>
+                                <h6 class="card-subtitle">@ViewBag.IndicatorDate</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 align-self-center">
+                                <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup>@ViewBag.ChokeSize</h2>
+                            </div>
+                            <div class="col-8 p-t-10 p-b-20 text-right">
+                                <div class="spark-count" style="height:65px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-inverse card-danger">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="m-r-20 align-self-center">
+                                <h1 class="text-white"><i class="ti-pie-chart"></i></h1>
+                            </div>
+                            <div>
+                                <h3 class="card-title">CompDisch Press</h3>
+                                <h6 class="card-subtitle">@ViewBag.IndicatorDate</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 align-self-center">
+                                <h2 class="font-light text-white">@ViewBag.CompDischPress</h2>
+                            </div>
+                            <div class="col-8 p-t-10 p-b-20 text-right align-self-center">
+                                <div class="spark-count2" style="height:65px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-xlg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Uptime/Gas Inject</h4>
+                        <h6 class="card-subtitle">The Graph analze average uptime and Gas Inject for a year</h6>
+                        <div id="morris-area-chart2" style="height: 335px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+
+        @section pagescript
+            {
+            <script src="~/Content/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+            <!-- chartist chart -->
+            <script src="~/Content/assets/plugins/chartist-js/dist/chartist.min.js"></script>
+            <script src="~/Content/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+            <script src="~/Content/assets/plugins/chartist-js/dist/chartist-init.js"></script>
+            <!--morris JavaScript -->
+            <script src="~/Content/assets/plugins/raphael/raphael-min.js"></script>
+            <script src="~/Content/assets/plugins/morrisjs/morris.min.js"></script>
+
+
+            <script src="~/Content/assets/plugins/knob/jquery.knob.js"></script>
+            <script>
+                $(function () {
+                    $('[data-plugin="knob"]').knob();
+                });
+            </script>
+
+            <script type="text/javascript">
+                /*
+Template Name: ERAS Software
+Author: Uhunghama Harrison
+Email: harrison.uhunghama@oriental-er.com
+File: js
+*/
+                $(function () {
+                    "use strict";
+                    // ==============================================================
+                    // Newsletter
+                    // ==============================================================
+                    var ReportIndicator = @Html.Raw(Json.Encode(ViewBag.ReportIndicator));
+                    var IFLP = @Html.Raw(Json.Encode(ViewBag.IFLP));
+                    var ITHP = @Html.Raw(Json.Encode(ViewBag.ITHP));
+                    var GasInjectData = @Html.Raw(ViewBag.GasInjectTrend);
+                    var chart = new Chartist.Line('.campaign', {
+                        labels: ReportIndicator,
+                        series: [
+                            IFLP
+                            , ITHP
+                        ]
+                    }, {
+                            low: 0,
+                            high: 28000,
+                            showArea: true,
+                            fullWidth: true,
+                            plugins: [
+                                Chartist.plugins.tooltip()
+                            ],
+                            axisY: {
+                                onlyInteger: true
+                                , scaleMinSpace: 40
+                                , offset: 20
+                                , labelInterpolationFnc: function (value) {
+                                    return (value / 1000) + 'k';
+                                }
+                            },
+                        });
+
+                    // Offset x1 a tiny amount so that the straight stroke gets a bounding box
+                    // Straight lines don't get a bounding box
+                    // Last remark on -> http://www.w3.org/TR/SVG11/coords.html#ObjectBoundingBox
+                    chart.on('draw', function (ctx) {
+                        if (ctx.type === 'area') {
+                            ctx.element.attr({
+                                x1: ctx.x1 + 0.001
+                            });
+                        }
+                    });
+
+                    // Create the gradient definition on created event (always after chart re-render)
+                    chart.on('created', function (ctx) {
+                        var defs = ctx.svg.elem('defs');
+                        defs.elem('linearGradient', {
+                            id: 'gradient',
+                            x1: 0,
+                            y1: 1,
+                            x2: 0,
+                            y2: 0
+                        }).elem('stop', {
+                            offset: 0,
+                            'stop-color': 'rgba(255, 255, 255, 1)'
+                        }).parent().elem('stop', {
+                            offset: 1,
+                            'stop-color': 'rgba(38, 198, 218, 1)'
+                        });
+                    });
+
+
+                    var chart = [chart];
+
+                    // ==============================================================
+                    // This is for the animation
+                    // ==============================================================
+
+                    for (var i = 0; i < chart.length; i++) {
+                        chart[i].on('draw', function (data) {
+                            if (data.type === 'line' || data.type === 'area') {
+                                data.element.animate({
+                                    d: {
+                                        begin: 500 * data.index,
+                                        dur: 500,
+                                        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                                        to: data.path.clone().stringify(),
+                                        easing: Chartist.Svg.Easing.easeInOutElastic
+                                    }
+                                });
+                            }
+                            if (data.type === 'bar') {
+                                data.element.animate({
+                                    y2: {
+                                        dur: 500,
+                                        from: data.y1,
+                                        to: data.y2,
+                                        easing: Chartist.Svg.Easing.easeInOutElastic
+                                    },
+                                    opacity: {
+                                        dur: 500,
+                                        from: 0,
+                                        to: 1,
+                                        easing: Chartist.Svg.Easing.easeInOutElastic
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+                    // ==============================================================
+                    // world map
+                    // ==============================================================
+
+                    // ==============================================================
+                    // SALES DIFFERENCE
+                    // ==============================================================
+
+
+                    Morris.Area({
+                        element: 'morris-area-chart2',
+                        data: GasInjectData,
+                        xkey: 'period',
+                        ykeys: ['Uptime', 'GasInject'],
+                        labels: ['Uptime', 'GasInject'],
+                        pointSize: 0,
+                        fillOpacity: 0.4,
+                        pointStrokeColors: ['#b4becb', '#01c0c8'],
+                        behaveLikeLine: true,
+                        gridLineColor: '#e0e0e0',
+                        lineWidth: 0,
+                        smooth: false,
+                        hideHover: 'auto',
+                        lineColors: ['#b4becb', '#01c0c8'],
+                        resize: true
+
+                    });
+
+                    // ==============================================================
+                    // sparkline chart
+                    // ==============================================================
+                    var sparklineLogin = function () {
+
+                        $('.spark-count').sparkline([4, 5, 0, 10, 9, 12, 4, 9, 4, 5, 3, 10, 9, 12, 10, 9, 12, 4, 9], {
+                            type: 'bar'
+                            , width: '100%'
+                            , height: '70'
+                            , barWidth: '2'
+                            , resize: true
+                            , barSpacing: '6'
+                            , barColor: 'rgba(255, 255, 255, 0.3)'
+                        });
+
+                        $('.spark-count2').sparkline([4, 5, 0, 10, 9, 12, 4, 9, 4, 5, 3, 10, 9, 12, 10, 9, 12, 4, 9], {
+                            type: 'bar'
+                            , width: '100%'
+                            , height: '70'
+                            , barWidth: '2'
+                            , resize: true
+                            , barSpacing: '6'
+                            , barColor: 'rgba(255, 255, 255, 0.3)'
+                        });
+
+                        $('#spark8').sparkline([4, 5, 0, 10, 9, 12, 4, 9], {
+                            type: 'bar',
+                            width: '100%',
+                            height: '40',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#26c6da'
+                        });
+                        $('#spark9').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+                            type: 'bar',
+                            width: '100%',
+                            height: '40',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#ef5350'
+                        });
+                        $('#spark10').sparkline([0, 5, 6, 10, 9, 12, 4, 9], {
+                            type: 'bar',
+                            width: '100%',
+                            height: '40',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#7460ee'
+                        });
+
+
+
+                    }
+                    var sparkResize;
+
+                    $(window).resize(function (e) {
+                        clearTimeout(sparkResize);
+                        sparkResize = setTimeout(sparklineLogin, 500);
+                    });
+                    sparklineLogin();
+                });
+
+
+            </script>
+
+            <script type="text/javascript">
+                //Simple line chart
+
+                new Chartist.Line('.ct-sm-line-chart', {
+                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                    series: [
+                        [12, 9, 7, 8, 5],
+                        [2, 1, 3.5, 7, 3],
+                        [1, 3, 4, 5, 6]
+                    ]
+                }, {
+                        fullWidth: true,
+
+                        plugins: [
+                            Chartist.plugins.tooltip()
+                        ],
+                        chartPadding: {
+                            right: 40
+                        }
+                    });
+
+                // line chart with area
+
+                new Chartist.Line('.ct-area-ln-chart', {
+                    labels: [1, 2, 3, 4, 5, 6, 7, 8],
+                    series: [
+                        [5, 9, 7, 8, 5, 3, 5, 4]
+                    ]
+                }, {
+                        low: 0,
+
+                        plugins: [
+                            Chartist.plugins.tooltip()
+                        ],
+                        showArea: true
+                    });
+
+                // ct-polar-chart
+                new Chartist.Line('#ct-polar-chart', {
+                    labels: [1, 2, 3, 4, 5, 6, 7, 8],
+                    series: [
+                        [1, 2, 3, 1, -2, 0, 1, 0],
+                        [-2, -1, -2, -1, -2.5, -1, -2, -1],
+                        [0, 0, 0, 1, 2, 2.5, 2, 1],
+                        [2.5, 2, 1, 0.5, 1, 0.5, -1, -2.5]
+                    ]
+                }, {
+                        high: 3,
+                        low: -3,
+                        chartPadding: {
+                            left: -20,
+                            top: 10,
+                        },
+                        showArea: true,
+                        showLine: false,
+                        showPoint: true,
+                        fullWidth: true,
+                        plugins: [
+                            Chartist.plugins.tooltip()
+                        ],
+                        axisX: {
+                            showLabel: true,
+                            showGrid: true
+                        },
+                        axisY: {
+                            showLabel: false,
+                            showGrid: true
+                        }
+                    });
+
+                // ct-animation-chart
+
+                var chart = new Chartist.Line('.ct-animation-chart', {
+                    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+                    series: [
+                        [12, 9, 7, 8, 5, 4, 6, 2, 3, 3, 4, 6],
+                        [4, 5, 3, 7, 3, 5, 5, 3, 4, 4, 5, 5],
+                        [5, 3, 4, 5, 6, 3, 3, 4, 5, 6, 3, 4]
+                    ]
+                }, {
+                        low: 0
+                    });
+
+                // Let's put a sequence number aside so we can use it in the event callbacks
+                var seq = 0,
+                    delays = 80,
+                    durations = 500;
+
+                // Once the chart is fully created we reset the sequence
+                chart.on('created', function () {
+                    seq = 0;
+                });
+
+                // On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
+                chart.on('draw', function (data) {
+                    seq++;
+
+                    if (data.type === 'line') {
+                        // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
+                        data.element.animate({
+                            opacity: {
+                                // The delay when we like to start the animation
+                                begin: seq * delays + 1000,
+                                // Duration of the animation
+                                dur: durations,
+                                // The value where the animation should start
+                                from: 0,
+                                // The value where it should end
+                                to: 1
+                            }
+                        });
+                    } else if (data.type === 'label' && data.axis === 'x') {
+                        data.element.animate({
+                            y: {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: data.y + 100,
+                                to: data.y,
+                                // We can specify an easing function from Chartist.Svg.Easing
+                                easing: 'easeOutQuart'
+                            }
+                        });
+                    } else if (data.type === 'label' && data.axis === 'y') {
+                        data.element.animate({
+                            x: {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: data.x - 100,
+                                to: data.x,
+                                easing: 'easeOutQuart'
+                            }
+                        });
+                    } else if (data.type === 'point') {
+                        data.element.animate({
+                            x1: {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: data.x - 10,
+                                to: data.x,
+                                easing: 'easeOutQuart'
+                            },
+                            x2: {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: data.x - 10,
+                                to: data.x,
+                                easing: 'easeOutQuart'
+                            },
+                            opacity: {
+                                begin: seq * delays,
+                                dur: durations,
+                                from: 0,
+                                to: 1,
+                                easing: 'easeOutQuart'
+                            }
+                        });
+                    } else if (data.type === 'grid') {
+                        // Using data.axis we get x or y which we can use to construct our animation definition objects
+                        var pos1Animation = {
+                            begin: seq * delays,
+                            dur: durations,
+                            from: data[data.axis.units.pos + '1'] - 30,
+                            to: data[data.axis.units.pos + '1'],
+                            easing: 'easeOutQuart'
+                        };
+
+                        var pos2Animation = {
+                            begin: seq * delays,
+                            dur: durations,
+                            from: data[data.axis.units.pos + '2'] - 100,
+                            to: data[data.axis.units.pos + '2'],
+                            easing: 'easeOutQuart'
+                        };
+
+                        var animations = {};
+                        animations[data.axis.units.pos + '1'] = pos1Animation;
+                        animations[data.axis.units.pos + '2'] = pos2Animation;
+                        animations['opacity'] = {
+                            begin: seq * delays,
+                            dur: durations,
+                            from: 0,
+                            to: 1,
+                            easing: 'easeOutQuart'
+                        };
+
+                        data.element.animate(animations);
+                    }
+                });
+
+                // For the sake of the example we update the chart every time it's created with a delay of 10 seconds
+                chart.on('created', function () {
+                    if (window.__exampleAnimateTimeout) {
+                        clearTimeout(window.__exampleAnimateTimeout);
+                        window.__exampleAnimateTimeout = null;
+                    }
+                    window.__exampleAnimateTimeout = setTimeout(chart.update.bind(chart), 12000);
+                });
+
+                // SVG Path animation graph
+                var chart = new Chartist.Line('.ct-svg-chart', {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                    series: [
+                        [1, 5, 2, 5, 4, 3],
+                        [2, 3, 4, 8, 1, 2],
+                        [5, 4, 3, 2, 1, 0.5]
+                    ]
+                }, {
+                        low: 0,
+                        showArea: true,
+                        showPoint: false,
+                        fullWidth: true
+                    });
+
+                chart.on('draw', function (data) {
+                    if (data.type === 'line' || data.type === 'area') {
+                        data.element.animate({
+                            d: {
+                                begin: 2000 * data.index,
+                                dur: 2000,
+                                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                                to: data.path.clone().stringify(),
+                                easing: Chartist.Svg.Easing.easeOutQuint
+                            }
+                        });
+                    }
+                });
+
+                // Bar chart
+
+                var data = {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    series: [
+                        [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+                        [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+                    ]
+                };
+
+                var options = {
+                    seriesBarDistance: 10
+                };
+
+                var responsiveOptions = [
+                    ['screen and (max-width: 640px)', {
+                        seriesBarDistance: 5,
+
+                        axisX: {
+                            labelInterpolationFnc: function (value) {
+                                return value[0];
+                            }
+                        }
+                    }]
+                ];
+
+                new Chartist.Bar('.ct-bar-chart', data, options, responsiveOptions);
+
+
+                // ct-gauge-chart
+
+                new Chartist.Pie('.ct-gauge-chart', {
+                    series: [20, 10, 30, 40]
+                }, {
+                        donut: true,
+                        donutWidth: 60,
+                        startAngle: 270,
+                        total: 200,
+                        low: 0,
+                        showLabel: false
+                    });
+
+                // Animated Donute chart
+                var chart = new Chartist.Pie('.ct-donute-chart', {
+                    series: [10, 20, 50, 20, 5, 50, 15],
+                    labels: [1, 2, 3, 4, 5, 6, 7]
+                }, {
+                        donut: true,
+                        showLabel: false
+                    });
+
+                chart.on('draw', function (data) {
+                    if (data.type === 'slice') {
+                        // Get the total path length in order to use for dash array animation
+                        var pathLength = data.element._node.getTotalLength();
+
+                        // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                        data.element.attr({
+                            'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                        });
+
+                        // Create animation definition while also assigning an ID to the animation for later sync usage
+                        var animationDefinition = {
+                            'stroke-dashoffset': {
+                                id: 'anim' + data.index,
+                                dur: 1000,
+                                from: -pathLength + 'px',
+                                to: '0px',
+                                easing: Chartist.Svg.Easing.easeOutQuint,
+                                // We need to use `fill: 'freeze'` otherwise our animation will fall back to initial (not visible)
+                                fill: 'freeze'
+                            }
+                        };
+
+                        // If this was not the first slice, we need to time the animation so that it uses the end sync event of the previous animation
+                        if (data.index !== 0) {
+                            animationDefinition['stroke-dashoffset'].begin = 'anim' + (data.index - 1) + '.end';
+                        }
+
+                        // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                        data.element.attr({
+                            'stroke-dashoffset': -pathLength + 'px'
+                        });
+
+                        // We can't use guided mode as the animations need to rely on setting begin manually
+                        // See http://gionkunz.github.io/chartist-js/api-documentation.html#chartistsvg-function-animate
+                        data.element.animate(animationDefinition, false);
+                    }
+                });
+
+                // For the sake of the example we update the chart every time it's created with a delay of 8 seconds
+                chart.on('created', function () {
+                    if (window.__anim21278907124) {
+                        clearTimeout(window.__anim21278907124);
+                        window.__anim21278907124 = null;
+                    }
+                    window.__anim21278907124 = setTimeout(chart.update.bind(chart), 10000);
+                });
+
+            </script>
+        }

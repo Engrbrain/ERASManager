@@ -1,0 +1,323 @@
+﻿@model IEnumerable<ERASManager.Models.RevisedBackAllocation.RBackAllocationMaster>
+
+@{
+    ViewBag.Title = "Revised BackAllocation Master Data";
+}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Revised BackAllocation Master Data</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">Revised BackAllocation Master Data</li>
+                <li class="breadcrumb-item active">Daily Report</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Revised BackAllocation Master Data</h4>
+                        <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print, Create New Daily Entry</h6>
+                        <h6 class="danger">@ViewBag.Message</h6>
+                        @using (Html.BeginForm("FilterReport", "RBackAllocationMasters", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary()
+                            <div class="row p-t-20">
+                                <div class="col-md-4">
+                                    <div class="form-group has-success">
+
+                                        <input type="date" name="StartDate" class="form-control" placeholder="Start Date" />
+                                        <small class="form-control-feedback">Start Date</small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-success">
+
+                                        <input type="date" name="EndDate" class="form-control" placeholder="End Date" />
+                                        <small class="form-control-feedback">End Date</small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-success"><i class='fa fa-filter'></i> Filter Report</button>
+                                </div>
+                                <!--/span-->
+                            </div>
+             }
+                        <p>
+
+                            <button type="button" id="AddBulkBackAllocation" class="btn btn-warning">Add New Record</button> <a href="javascript:void(0)" class="btn btn-success ProcessAllocation"> Process BackAllocation </a>
+
+                        </p>
+                        <div class="table-responsive m-t-40" style="overflow-x: auto;">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Well</th>
+                                        <th>BLPD</th>
+                                        <th>BSW</th>
+                                        <th>GOR</th>
+                                        <th>CFB SF</th>
+                                        <th>WFB SF</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Well</th>
+                                        <th>BLPD</th>
+                                        <th>BSW</th>
+                                        <th>GOR</th>
+                                        <th>CFB SF</th>
+                                        <th>WFB SF</th>
+                                       
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IndicatorDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Well)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BLPD)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BSW)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.GOR)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CFBStrinkageFactor)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WFBStrinkageFactor)
+                                            </td>
+
+                                           
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- Bootstrap modal popup -->
+        <div class="modal fade" id="processAllocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header alert alert-danger">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Process Back Allocation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="success-message">The Process BackAllocation Process might take sometime. It has also been scheduled to run as a background process every 30mins. Click the Process Button if you want to run it Now. </p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="@Url.Action("ProcessBackAllocation", "RBackAllocationMasters")" class="btn btn-success"> Process </a>
+                        <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="LoadBulkFilter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header alert alert-danger">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Select BackAllocation Date</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm("CreateMultipleBulk", "RBackAllocationMasters", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary()
+                            <div class="row p-t-20">
+                                <div class="col-md-10">
+                                    <div class="form-group has-success">
+
+                                        <input type="date" name="IndicatorDate" class="form-control" placeholder="Start Date" />
+                                        <small class="form-control-feedback">Allocation Date</small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success">Start</button>
+                                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- End of the boostrap modal popup -->
+
+        @section pagescript
+            {
+            <!-- This is data table -->
+            <script src="~/Content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+            <!-- start - This is for export functionality only -->
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+            <!-- end - This is for export functionality only -->
+            
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#myTable').DataTable();
+                    $(document).ready(function () {
+                        var table = $('#example').DataTable({
+                            "columnDefs": [{
+                                "visible": false,
+                                "targets": 2
+                            }],
+                            "order": [
+                                [2, 'asc']
+                            ],
+                            "displayLength": 25,
+                            "drawCallback": function (settings) {
+                                var api = this.api();
+                                var rows = api.rows({
+                                    page: 'current'
+                                }).nodes();
+                                var last = null;
+                                api.column(2, {
+                                    page: 'current'
+                                }).data().each(function (group, i) {
+                                    if (last !== group) {
+                                        $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                                        last = group;
+                                    }
+                                });
+                            }
+                        });
+                        // Order by the grouping
+                        $('#example tbody').on('click', 'tr.group', function () {
+                            var currentOrder = table.order()[0];
+                            if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                                table.order([2, 'desc']).draw();
+                            } else {
+                                table.order([2, 'asc']).draw();
+                            }
+                        });
+                    });
+
+                    $("#AddBulkBackAllocation").click(function () {
+                        $("#LoadBulkFilter").modal('show');
+                    });
+
+                    $('.ProcessAllocation').click(function () {
+                        $('#processAllocation').modal('show');
+                    });
+
+                });
+                $('#example23').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+            </script>
+        }
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //start of the document ready function
+                //delcaring global variable to hold primary key value.
+                $("#AddBulkBackAllocation").click(function () {
+                    $("#LoadBulkFilter").modal('show');
+                });
+
+               
+                var pryEmpId;
+                $('.delete-prompt').click(function () {
+                    pryRecId = $(this).attr('id');
+                    $('#myModal').modal('show');
+                });
+
+                $('.delete-confirm').click(function () {
+                    if (pryEmpId != '') {
+                        $.ajax({
+                            url: '/RBackAllocationMasters/RemoveRecord',
+                            data: { 'Id': pryRecId },
+                            type: 'get',
+                            success: function (data) {
+                                if (data) {
+                                    //now re-using the boostrap modal popup to show success message.
+                                    //dynamically we will change background colour
+                                    if ($('.modal-header').hasClass('alert-danger')) {
+                                        $('.modal-header').removeClass('alert-danger').addClass('alert-success');
+                                        //hide ok button as it is not necessary
+                                        $('.delete-confirm').css('display', 'none');
+                                    }
+                                    $('.success-message').html('Record deleted successfully');
+                                    window.location.href = '/RBackAllocationMasters/Index'
+                                }
+                            }, error: function (err) {
+                                if (!$('.modal-header').hasClass('alert-danger')) {
+                                    $('.modal-header').removeClass('alert-success').addClass('alert-danger');
+                                    $('.delete-confirm').css('display', 'none');
+                                }
+                                $('.success-message').html(err.statusText);
+                            }
+                        });
+                    }
+                });
+
+                //function to reset bootstrap modal popups
+                $("#myModal").on("hidden.bs.modal", function () {
+                    $(".modal-header").removeClass(' ').addClass('alert-danger');
+                    $('.delete-confirm').css('display', 'inline-block');
+                    $('.success-message').html('').html('Are you sure you wish to delete this record ?');
+                });
+
+                //end of the docuement ready function
+            });
+        </script>

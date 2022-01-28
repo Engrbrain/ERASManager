@@ -1,0 +1,96 @@
+﻿@model ERASManager.Models.EBOKDailyReport.WFBMaintenanceData
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>WFBMaintenanceData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Parameters)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parameters)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DailyTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DailyTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreviousTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreviousTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cummulative)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cummulative)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

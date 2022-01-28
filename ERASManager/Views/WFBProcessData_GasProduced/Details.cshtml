@@ -1,0 +1,66 @@
+﻿@model ERASManager.Models.EBOKDailyReport.WFBProcessData_GasProduced
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WFBProcessData_GasProduced</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GasFlowParameter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GasFlowParameter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GasFlow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GasFlow)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

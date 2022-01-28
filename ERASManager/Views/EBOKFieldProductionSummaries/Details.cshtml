@@ -1,0 +1,442 @@
+﻿@model ERASManager.Models.EBOKTranformedData.EBOKFieldProductionSummary
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EBOKFieldProductionSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IndicatorDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndicatorDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uptime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uptime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdOil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdOil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CumProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CumProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdGas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdGas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBAllocatedGas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBAllocatedGas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBFlaringUptime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBFlaringUptime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gaslift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gaslift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalProducedGas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalProducedGas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CumGas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CumGas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdWater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdWater)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CumWater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CumWater)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EffluentOilInWater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EffluentOilInWater)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.API)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.API)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExportAPI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExportAPI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExportTemp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExportTemp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExportMetersReadingGross)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExportMetersReadingGross)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExportMetersReadingNet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExportMetersReadingNet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldWaterCut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldWaterCut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExportWaterCut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExportWaterCut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PumpablecargoonBoard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PumpablecargoonBoard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adjustment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adjustment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalMeteredGasFlared)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalMeteredGasFlared)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViriniPremStockBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ViriniPremStockBalance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BSW)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BSW)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldGOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldGOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdjustedFieldGOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdjustedFieldGOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WaterOverboard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WaterOverboard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreeWaterReceived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreeWaterReceived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WaterOverboardMOPU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WaterOverboardMOPU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UllageMeasurement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UllageMeasurement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOPUcorrectedmeterVariance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOPUcorrectedmeterVariance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BSWManual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BSWManual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BSWAutosampler)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BSWAutosampler)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OffloadVolume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffloadVolume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OffloadBSW)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffloadBSW)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OffloadAPI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OffloadAPI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Forecast)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forecast)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdealDayRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdealDayRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarketExpectation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarketExpectation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deferment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deferment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstmatedProdGas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstmatedProdGas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetLC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetLC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetHC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetHC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TechnicalAllowable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechnicalAllowable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommercialAllowable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommercialAllowable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualProdGas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualProdGas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WeeklyAverage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WeeklyAverage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

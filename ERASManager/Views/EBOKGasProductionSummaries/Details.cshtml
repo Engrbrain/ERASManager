@@ -1,0 +1,242 @@
+﻿@model ERASManager.Models.EBOKTranformedData.EBOKGasProductionSummary
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EBOKGasProductionSummary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IndicatorDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndicatorDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwoPhaseSeperator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwoPhaseSeperator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestSeperator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestSeperator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionSeperator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionSeperator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LPVessels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LPVessels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBAllocatedgas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBAllocatedgas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBProcessUptime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBProcessUptime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBFlaringUptime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBFlaringUptime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBContribution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBContribution)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBPROCESSTOTAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBPROCESSTOTAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBGasLift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBGasLift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CFBGasLift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CFBGasLift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TOTALGasLift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOTALGasLift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneratorFuel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneratorFuel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelGasKOD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelGasKOD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GTCompressorconsumption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GTCompressorconsumption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CalcuatedInjectedGas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CalcuatedInjectedGas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeteredGasInjected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeteredGasInjected)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GASUtilizationTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GASUtilizationTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HPFLARE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HPFLARE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LPFLARE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LPFLARE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WFBGasFlared)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WFBGasFlared)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalMeteredGasFlared)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalMeteredGasFlared)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GASFLAREDTOTAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GASFLAREDTOTAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

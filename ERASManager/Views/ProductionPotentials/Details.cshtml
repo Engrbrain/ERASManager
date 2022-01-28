@@ -1,0 +1,90 @@
+﻿@model ERASManager.Models.EBOKDailyReport.ProductionPotential
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductionPotential</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Well)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Well)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrossLiquid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrossLiquid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Water)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Water)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

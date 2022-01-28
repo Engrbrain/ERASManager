@@ -1,0 +1,138 @@
+﻿@{
+
+    ViewBag.Title = "EBOKInjectivityIndexDashboard";
+}
+
+@section pagecss
+            {
+<link href="~/Content/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+<link href="~/Content/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+<link href="~/Content/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+}
+
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">EBOK Injectivity Index Dashboard</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">Charts</li>
+                <li class="breadcrumb-item active">EBOK Injectivity Index Dashboard</li>
+            </ol>
+        </div>
+        <div class="">
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Simple Line Chart</h4>
+                        <div class="ct-sm-line-chart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Line Chart with Area</h4>
+                        <div class="ct-area-ln-chart" style="height: 400px;"></div>>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">BI-Polar Line Chart</h4>
+                        <div id="ct-polar-chart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Animation Chart</h4>
+                        <div class="ct-animation-chart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Radar Chart</h4>
+                        <div class="ct-bar-chart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">SVG animation chart</h4>
+                        <div class="ct-svg-chart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">GAUGE CHART</h4>
+                        <div class="ct-gauge-chart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Donute chart</h4>
+                        <div class="ct-donute-chart" style="height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        @section pagescript
+        {
+        <!-- ============================================================== -->
+        <!-- chartist chart -->
+        <script src="~/Content/assets/plugins/chartist-js/dist/chartist.min.js"></script>
+        <script src="~/Content/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+        <script src="~/Content/assets/plugins/chartist-js/dist/chartist-init.js"></script>
+        }
+

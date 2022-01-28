@@ -1,0 +1,201 @@
+﻿@model IEnumerable<ERASManager.Models.EBOKDailyReport.CFBCrudeExportMeter>
+@{
+    ViewBag.Title = "CFBCrudeExportMeter - CreateMultipleBulk";
+}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">CFB Crude Export Meters </h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">CFB Crude Export Meters</li>
+                <li class="breadcrumb-item active">Add Data - Previous List Method (PLM)</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">CFB Crude Export Meters </h4>
+                        <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print, Create New Daily Entry</h6>
+                        <div class="table-responsive m-t-40" style="overflow-x: auto;">
+                            @using (Html.BeginForm())
+                            {
+                                <table id="maintable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Meter</th>
+                                            <th>Current 08:00</th>
+                                            <th>Meter Factor</th>
+                                            <th>Gross CORR</th>
+                                            <th>BS &W (%)</th>
+                                            <th>NET OIL (bopd)</th>
+                                            <th>Date</th>
+                                            <th class="text-nowrap">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Meter</th>
+                                            <th>Current 08:00</th>
+                                            <th>Meter Factor</th>
+                                            <th>Gross CORR</th>
+                                            <th>BS &W (%)</th>
+                                            <th>NET OIL (bopd)</th>
+                                            <th>Date</th>
+                                            <th class="text-nowrap">Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                       
+                                        <tr class="datalines">
+                                            <td>
+                                                <input type="text" name="MeterName" class="form-control MeterName01" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="CurrentEightHours" class="form-control CurrentEightHours01" />
+                                            </td>
+                                            <td>
+
+                                                <input type="text" name="MeterFactor" class="form-control MeterFactor01" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="GrossCorr" class="form-control GrossCorr01" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="BSW" class="form-control BSW01" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="NetOil" class="form-control NetOil01" />
+                                            </td>
+                                            <td>
+
+                                                <input type="date" name="ReportDate" class="form-control ReportDate01" />
+                                            </td>
+                                            <td>
+
+                                                <button type="button" id="btnAdd" class="btn btn-primary btn-rounded classAdd"><i class='fa fa-plus'></i>Add Line</button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" id="btnSubmit" class="btn btn-primary btn-md pull-right btn-sm">Submit</button>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        @section pagescript
+            {
+            <!-- This is data table -->
+            <script src="~/Content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+            <!-- start - This is for export functionality only -->
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+            <!-- end - This is for export functionality only -->
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("click", ".classAdd", function () { //
+                        var rowCount = $('.datalines').length + 1;
+                        var contactdiv = '<tr class="datalines">' +
+                            '<td><input type="text" name="MeterName' + rowCount + '" class="form-control MeterName01" /></td>' +
+                            '<td><input type="text" name="CurrentEightHours' + rowCount + '" class="form-control CurrentEightHours01" /></td>' +
+                            '<td><input type="text" name="MeterFactor' + rowCount + '" class="form-control MeterFactor01" /></td>' +
+                            '<td><input type="text" name="GrossCorr' + rowCount + '" class="form-control GrossCorr01" /></td>' +
+                            '<td><input type="text" name="BSW' + rowCount + '" class="form-control BSW01" /></td>' +
+                            '<td><input type="text" name="NetOil' + rowCount + '" class="form-control NetOil01" /></td>' +
+                            '<td><input type="date" name="ReportDate' + rowCount + '" class="form-control ReportDate01" /></td>' +
+                            '<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add More</button>' +
+                            '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">Remove</button></td>' +
+                            '</tr>';
+                        $('#maintable').append(contactdiv);
+                    });
+                });
+            </script>
+
+            <script type="text/javascript">
+                $(document).on("click", ".deleteContact", function () {
+                    $(this).closest("tr").remove();    
+                });  
+            </script>
+
+            <script type="text/javascript">
+                function getallData() {
+                    var data = [];
+                    $('tr.datalines').each(function () {
+                        var MeterName = $(this).find('.MeterName01').val();  
+                        var CurrentEightHours = $(this).find('.CurrentEightHours01').val();  
+                        var MeterFactor = $(this).find('.MeterFactor01').val();
+                        var GrossCorr = $(this).find('.GrossCorr01').val();
+                        var BSW = $(this).find('.BSW01').val();
+                        var NetOil = $(this).find('.NetOil01').val();
+                        var ReportDate = $(this).find('.ReportDate01').val();
+                        var alldata = {
+                            'MeterName': MeterName,
+                            'CurrentEightHours': CurrentEightHours,  
+                            'MeterFactor': MeterFactor,
+                            'GrossCorr': GrossCorr,
+                            'BSW': BSW,
+                            'NetOil': NetOil,
+                            'ReportDate': ReportDate
+                        }
+                        data.push(alldata);
+                    });
+                    console.log(data);//  
+                    return data;
+                }
+                $("#btnSubmit").click(function () {
+                    var data = JSON.stringify(getallData());
+                    //console.log(data);    
+                    $.ajax({
+                        url: '/CFBCrudeExportMeters/LoadBulkData',  
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({ 'mydata': data }),
+                        success: function () {
+                            alert("Data Added Successfully");
+                            window.location.href = '/CFBCrudeExportMeters/Index'
+                        },
+                        error: function () {
+                            window.location.href = '/CFBCrudeExportMeters/Index'
+                        }
+                    });
+                });  
+
+            </script>
+        }
+
+

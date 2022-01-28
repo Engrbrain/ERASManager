@@ -1,0 +1,162 @@
+﻿@model IEnumerable<ERASManager.Models.EBOKDailyReport.OperationsSummary>
+
+@{
+    ViewBag.Title = "Operations Summary Report - Index";
+}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Operations Summary</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">Operations Summary</li>
+                <li class="breadcrumb-item active">Add Multiple Record</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Operations Summary</h4>
+                        <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print, Create New Daily Entry</h6>
+
+                      
+                        <div class="table-responsive m-t-40" style="overflow-x: auto;">
+                            @using (Html.BeginForm())
+                            {
+
+                                <table id="maintable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Operations Report</th>
+                                            <th>Report Date</th>
+                                            <th class="text-nowrap">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Operations Report</th>
+                                            <th>Report Date</th>
+                                            <th class="text-nowrap">Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+
+                                        <tr class="datalines">
+                                            <td>
+
+                                                
+                                                <textarea name="OperationsReport1" rows="10" cols="30" class="form-control OperationsReport01"></textarea>
+                                            </td>
+                                            <td>
+                                                <input type="date" name="ReportDate1" class="form-control ReportDate01" />
+                                            </td>
+
+                                            <td>
+                                                <button type="button" id="btnAdd" class="btn btn-primary btn-rounded classAdd"><i class='fa fa-plus'></i>Add Line</button>
+                                            </td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                                <button type="button" id="btnSubmit" class="btn btn-primary  pull-right ">Submit</button>
+                            }
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        @section pagescript
+            {
+            <!-- This is data table -->
+            <script src="~/Content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+            <!-- start - This is for export functionality only -->
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+            <!-- end - This is for export functionality only -->
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("click", ".classAdd", function () { //
+                        var rowCount = $('.datalines').length + 1;
+                        var contactdiv = '<tr class="datalines">' +
+                            '<td><textarea name="OperationsReport' + rowCount + '" rows="10" cols="30" class="form-control OperationsReport01"></textarea>' +
+                            '<td><input type="date" name="ReportDate' + rowCount + '" class="form-control ReportDate01" /></td>' +
+                            '<td><button type="button" id="btnAdd" class="btn  btn-primary classAdd">Add More</button>' +
+                            '<button type="button" id="btnDelete" class="deleteContact btn  btn-danger ">Remove</button></td>' +
+                            '</tr>';
+                        $('#maintable').append(contactdiv);
+                    });
+                });
+            </script>
+
+            <script type="text/javascript">
+                $(document).on("click", ".deleteContact", function () {
+                    $(this).closest("tr").remove();
+                });
+            </script>
+
+            <script type="text/javascript">
+                function getallData() {
+                    var data = [];
+                    $('tr.datalines').each(function () {
+                        var OperationsReport = $(this).find('.OperationsReport01').val();
+                        var ReportDate = $(this).find('.ReportDate01').val();
+                        var alldata = {
+                            'OperationsReport': OperationsReport,
+                            'ReportDate': ReportDate
+                        }
+                        data.push(alldata);
+                    });
+                    console.log(data);//
+                    return data;
+                }
+                $("#btnSubmit").click(function () {
+                    var data = JSON.stringify(getallData());
+                    //console.log(data);
+                    $.ajax({
+                        url: '/OperationsSummaries/LoadBulkData',
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        data: JSON.stringify({ 'mydata': data }),
+                        success: function () {
+                            
+                            window.location.href = '/OperationsSummaries/Index'
+                        },
+                        error: function () {
+                            window.location.href = '/OperationsSummaries/Index'
+                        }
+                    });
+                });
+
+            </script>
+            
+        }

@@ -1,0 +1,291 @@
+﻿@model ERASManager.Models.EBOKTranformedData.EBOKGasProductionSummary
+
+@{
+    ViewBag.Title = "EBOK Gas Production Summary - Create";
+}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">BOK Gas Production Summary</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">EBOK Gas Production Summary</a></li>
+                <li class="breadcrumb-item">Add Daily Report</li>
+                <li class="breadcrumb-item active">Create</li>
+            </ol>
+        </div>
+        <div class="">
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">EBOK Gas Production Summary</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-body">
+                                <h3 class="card-title">Add Daily Report</h3>
+                                <hr>
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Date</label>
+                                            @Html.EditorFor(model => model.IndicatorDate, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.IndicatorDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Two Phase Seperator</label>
+                                            @Html.EditorFor(model => model.TwoPhaseSeperator, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TwoPhaseSeperator, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Test Seperator</label>
+                                            @Html.EditorFor(model => model.TestSeperator, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TestSeperator, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Production Seperator</label>
+                                            @Html.EditorFor(model => model.ProductionSeperator, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ProductionSeperator, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">LP Vessls</label>
+                                            @Html.EditorFor(model => model.LPVessels, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.LPVessels, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">WFB Allocated Gas</label>
+                                            @Html.EditorFor(model => model.WFBAllocatedgas, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WFBAllocatedgas, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">WFB Process Uptime</label>
+                                            @Html.EditorFor(model => model.WFBProcessUptime, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WFBProcessUptime, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">WFB Flaring Uptime</label>
+                                            @Html.EditorFor(model => model.WFBFlaringUptime, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WFBFlaringUptime, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">WFB Contribtion</label>
+                                            @Html.EditorFor(model => model.WFBContribution, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WFBContribution, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">WFB Process Total</label>
+                                            @Html.EditorFor(model => model.WFBPROCESSTOTAL, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WFBPROCESSTOTAL, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">WFB Gas Lift</label>
+                                            @Html.EditorFor(model => model.WFBGasLift, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WFBGasLift, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">CFB Gas Lift</label>
+                                            @Html.EditorFor(model => model.CFBGasLift, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CFBGasLift, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Total Gas Lift</label>
+                                            @Html.EditorFor(model => model.TOTALGasLift, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TOTALGasLift, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Generator Fuel</label>
+                                            @Html.EditorFor(model => model.GeneratorFuel, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.GeneratorFuel, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Fuel Gas KOD</label>
+                                            @Html.EditorFor(model => model.FuelGasKOD, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.FuelGasKOD, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">GT Compressor consumption</label>
+                                            @Html.EditorFor(model => model.GTCompressorconsumption, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.GTCompressorconsumption, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Calcuated Injected Gas</label>
+                                            @Html.EditorFor(model => model.CalcuatedInjectedGas, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CalcuatedInjectedGas, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">Metered Gas Injected</label>
+                                            @Html.EditorFor(model => model.MeteredGasInjected, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.MeteredGasInjected, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">GAS Utilization Total</label>
+                                            @Html.EditorFor(model => model.GASUtilizationTotal, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.GASUtilizationTotal, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">HP FLARE</label>
+                                            @Html.EditorFor(model => model.HPFLARE, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.HPFLARE, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">LP FLARE</label>
+                                            @Html.EditorFor(model => model.LPFLARE, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.LPFLARE, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">WFB Gas Flared</label>
+                                            @Html.EditorFor(model => model.WFBGasFlared, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WFBGasFlared, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Total Metered Gas Flared</label>
+                                            @Html.EditorFor(model => model.TotalMeteredGasFlared, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TotalMeteredGasFlared, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group has-danger">
+                                            <label class="control-label">GAS FLARED TOTAL</label>
+                                            @Html.EditorFor(model => model.GASFLAREDTOTAL, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.GASFLAREDTOTAL, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-success"> <i class="fa fa-plus"></i> Add Record</button>
+                                    <button type="button" class="btn btn-inverse"><i class="fa fa-times"></i>Cancel</button>
+                                    <a href="@Url.Action("Index", "EBOKGasProductionSummaries")" class="btn btn-info"><i class="fa fa-backward"></i> &nbsp;Back To List&nbsp; </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+
+        </div>
+    </div>

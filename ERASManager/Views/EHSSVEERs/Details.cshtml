@@ -1,0 +1,98 @@
+﻿@model ERASManager.Models.EBOKDailyReport.EHSSVEER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EHSSVEER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParameterCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParameterCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parameter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parameter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Today)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Today)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentWeek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cummulative)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cummulative)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

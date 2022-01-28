@@ -1,0 +1,125 @@
+﻿@model ERASManager.Models.EBOKDailyReport.CFBMaintenanceData
+
+@{
+    ViewBag.Title = "CFB Maintenance Data - Create";
+}
+
+<h2>Create</h2>
+
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">CFB Maintenance Data</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">CFB Gas Compression</a></li>
+                <li class="breadcrumb-item">Add Daily Report</li>
+                <li class="breadcrumb-item active">Create</li>
+            </ol>
+        </div>
+        <div class="">
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card card-outline-info">
+                    <div class="card-header">
+                        <h4 class="m-b-0 text-white">CFB Maintenance Data</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                        <div class="form-body">
+                            <h3 class="card-title">Add Daily Report</h3>
+                            <hr>
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Parameters</label>
+                                        @Html.EditorFor(model => model.Parameters, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Parameters, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">Daily Total</label>
+                                        @Html.EditorFor(model => model.DailyTotal, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DailyTotal, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Previous Total</label>
+                                        @Html.EditorFor(model => model.PreviousTotal, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PreviousTotal, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">Cummulative</label>
+                                        @Html.EditorFor(model => model.Cummulative, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Cummulative, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Comment</label>
+                                        @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group has-danger">
+                                        <label class="control-label">Report Date</label>
+                                        @Html.EditorFor(model => model.ReportDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ReportDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+
+                        </div>
+
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-plus"></i> Add Record</button>
+                                <button type="button" class="btn btn-inverse"><i class="fa fa-times"></i>Cancel</button>
+                                <a href="@Url.Action("Index", "CFBMaintenanceDatas")" class="btn btn-info"><i class="fa fa-backward"></i> &nbsp;Back To List&nbsp; </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+
+    </div>

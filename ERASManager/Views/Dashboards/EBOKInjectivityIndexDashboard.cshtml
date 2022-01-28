@@ -1,0 +1,154 @@
+﻿
+@{
+
+    ViewBag.Title = "EBOKInjectivityIndexDashboard";
+}
+
+@section pagecss
+            {
+    <link href="~/Content/assets/plugins/morrisjs/morris.css" rel="stylesheet">
+}
+
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">EBOK Injectivity Index</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">Dashboards</li>
+                <li class="breadcrumb-item active">EBOK Injectivity Index</li>
+            </ol>
+        </div>
+        <div class="">
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Injectivity Index Chart</h4>
+                        <ul class="list-inline text-right">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>THIP</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>INJRate</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-success"></i>Uptime</h5>
+                            </li>
+                        </ul>
+                        <div id="morris-area-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">INJRate Vs THIP</h4>
+                        <ul class="list-inline text-right">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>Injector Index</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>Scaled up Rate</h5>
+                            </li>
+                        </ul>
+                        <div id="morris-area-chart2"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <div class="col-lg-6" style="display:none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Real Chart</h4>
+                        <div class="demo-container" style="height:400px;">
+                            <div id="placeholder" class="flot-chart-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <div class="col-lg-6" style="display:none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Line Chart</h4>
+                        <div id="morris-line-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Donute Chart</h4>
+                        <div id="morris-donut-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Injectivity Index Chart</h4>
+                        <div id="morris-bar-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-12" style="display:none;">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Extra Area Chart</h4>
+                        <ul class="list-inline text-center m-t-40">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>Site A</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>Site B</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-success"></i>Site C</h5>
+                            </li>
+                        </ul>
+                        <div id="extra-area-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        @section pagescript
+            {
+            <!--Morris JavaScript -->
+            <script src="~/Content/assets/plugins/raphael/raphael-min.js"></script>
+            <script src="~/Content/assets/plugins/morrisjs/morris.js"></script>
+            <script src="~/Content/js/morris-data.js"></script>
+        }

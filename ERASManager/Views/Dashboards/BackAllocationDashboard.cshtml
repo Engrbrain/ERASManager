@@ -1,0 +1,1172 @@
+﻿@model IEnumerable<ERASManager.Models.EBOKOutputData.BackAllocationQo>
+@{
+    /**/
+
+    ViewBag.Title = "BackAllocationDashboard";
+}
+
+@section pagecss
+            {
+
+    <link href="~/Content/assets/plugins/morrisjs/morris.css" rel="stylesheet">
+}
+
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Dashboard</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                            <h3 class="">@ViewBag.ActualGOR</h3>
+                            <h6 class="card-subtitle">Actual Gas Oil Ratio</h6>
+                        </div>
+                        <div class="col-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="m-b-0"><i class="mdi mdi-alert-circle text-success"></i></h2>
+                            <h3 class="">@ViewBag.BOPD</h3>
+                            <h6 class="card-subtitle">Barrel of Oil Per Day</h6>
+                        </div>
+                        <div class="col-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="m-b-0"><i class="mdi mdi-wallet text-purple"></i></h2>
+                            <h3 class="">@ViewBag.BLPD</h3>
+                            <h6 class="card-subtitle">Barrel of Liquid Per Day</h6>
+                        </div>
+                        <div class="col-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 56%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="m-b-0"><i class="mdi mdi-buffer text-warning"></i></h2>
+                            <h3 class="">@ViewBag.BSW</h3>
+                            <h6 class="card-subtitle">Basic Sediment &Aacute; Water</h6>
+                        </div>
+                        <div class="col-12">
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 26%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Flow Hours</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="weekflowhours"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">@ViewBag.FLOWHRS</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Gas Allocation</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="weekGasAllocation"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">@ViewBag.GasAllocation</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">QgActual</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="weekQgActual"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">@ViewBag.QgActual</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">QgPotential</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="weekQgPotential"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-down text-danger"></i> <span class="text-danger">@ViewBag.QgPotential</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Qlest <small class="pull-right text-success"><i class="fa fa-sort-asc"></i> @ViewBag.Qlest Qlest for Selected Well</small></h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>CFB Qlest</h6>
+                                <b>@ViewBag.CFBQlest</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>WFB Qlest</h6>
+                                <b>@ViewBag.WFBQlest</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>Total Qlest</h6>
+                                <b>@ViewBag.TotalQlest</b>
+                            </div>
+                        </div>
+                        <div id="weekQlest"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Qlink</h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>Qlink (Sel. Well)</h6>
+                                <b>@ViewBag.Qlink</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>CFB Qlink</h6>
+                                <b>@ViewBag.CFBQlink</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>WFB Qlink</h6>
+                                <b>@ViewBag.WFBQlink</b>
+                            </div>
+                        </div>
+                        <div id="weekQlink"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Qo</h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>Qo (Selected Well)</h6>
+                                <b>@ViewBag.Qo</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>CFB Qo</h6>
+                                <b>@ViewBag.CFBQo</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>WFB Qo</h6>
+                                <b>@ViewBag.WFBQo</b>
+                            </div>
+                        </div>
+                        <div id="weekQo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Column -->
+            <div class="col-lg-8 col-xlg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="d-flex flex-wrap">
+                                    <div>
+                                        <h4 class="card-title">BOPD vs BPLD</h4>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>BOPD</h6>
+                                            </li>
+                                            <li>
+                                                <h6 class="text-muted  text-info"><i class="fa fa-circle font-10 m-r-10"></i>BPLD</h6>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div id="BOPDvsBPLD" style="height: 355px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <div class="col-lg-4 col-xlg-3">
+                <div class="card card-inverse card-info">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="m-r-20 align-self-center">
+                                <h1 class="text-white"><i class="ti-light-bulb"></i></h1>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Well Test Potential</h3>
+                                <h6 class="card-subtitle">@ViewBag.IndicatorDate</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 align-self-center">
+                                <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup>@ViewBag.headerwellTestPotential</h2>
+                            </div>
+                            <div class="col-6 p-t-10 p-b-20 text-right">
+                                <div class="spark-count" style="height:65px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-inverse card-success">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="m-r-20 align-self-center">
+                                <h1 class="text-white"><i class="ti-pie-chart"></i></h1>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Qw</h3>
+                                <h6 class="card-subtitle">@ViewBag.IndicatorDate</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 align-self-center">
+                                <h2 class="font-light text-white">@ViewBag.headerQw</h2>
+                            </div>
+                            <div class="col-6 p-t-10 p-b-20 text-right align-self-center">
+                                <div class="spark-count2" style="height:65px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block">
+                            <h4 class="card-title">Qo<br /><small class="text-muted">Weekly Report</small></h4>
+                            <div class="ml-auto">
+                                <select class="custom-select">
+                                    <option selected="">This Week Total: @Model.Sum(i => i.Qo)  </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light p-20">
+                        <div class="d-flex">
+                            <div class="align-self-center">
+                                <h3 class="m-b-0">Today</h3><small>Total Qo</small>
+                            </div>
+                            <div class="ml-auto align-self-center">
+                                <h2 class="text-success">@ViewBag.headerQo</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover earning-box">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Date</th>
+                                        <th>Well</th>
+                                        <th>Qo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td style="width:50px;">@Html.DisplayFor(modelItem => item.IndicatorDate)</td>
+                                            <td>
+                                                <h6>@Html.DisplayFor(modelItem => item.Well)</h6>
+                                            </td>
+                                            <td><span class="label label-success">Qo</span></td>
+                                            <td>@Html.DisplayFor(modelItem => item.Qo)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <!-- Column -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">CFB Back Allocation Daily Indicators</h4>
+                        <h6 class="card-subtitle">These are some key parameters and indicators taking today</h6>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- Comment widgets -->
+                    <!-- ============================================================== -->
+                    <div class="card-body">
+                        <h4 class="card-title d-flex">CFB Qg Actual</h4>
+                        <div class="text-center">
+                            <input data-plugin="knob" data-width="150" data-height="150" data-linecap=round data-fgColor="#01c0c8" value="@ViewBag.CFBQgActual" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <h4 class="card-title d-flex">CFB Qg Potential</h4>
+                        <div class="text-center">
+                            <input data-plugin="knob" data-width="150" data-height="150" data-linecap=round data-fgColor="#ffbc34" value="@ViewBag.CFBQgPotential" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                        </div>
+                    </div>
+                    <!-- Column -->
+
+
+                    <div class="card-body">
+                        <h4 class="card-title d-flex">CFB Gas Allocation</h4>
+                        <div class="text-center">
+                            <input data-plugin="knob" data-width="150" data-height="150" data-linecap=round data-fgColor="#fb9678" value="@ViewBag.CFBGasAllocation" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Qo </h4>
+                        <div class="demo-container" style="height:400px;">
+                            <div id="YearlyBackAllocationQo" class="flot-chart-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Qlink vs Qlest</h4>
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="QlinkvsQlest"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Prod Oil vs BOPD vs BPLD vs Assumed GOR vs Actual GOR</h4>
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="backAllocationParameterPie"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Back Allocation Qw</h4>
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="backAllocationQw"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Back Allocation FlowHRS</h4>
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="backAllocationFlowHrs"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Assumed GOR vs Actual GOR vs BOPD</h4>
+                        <div class="flot-chart">
+                            <div class="GORvsBOPD" style="height: 320px;"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+
+        @section pagescript
+            {
+            <script src="~/Content/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+            <script src="~/Content/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+            <script src="~/Content/assets/plugins/sparkline/jquery.charts-sparkline.js"></script>
+            <!--morris JavaScript -->
+            <script src="~/Content/assets/plugins/raphael/raphael-min.js"></script>
+            <script src="~/Content/assets/plugins/morrisjs/morris.min.js"></script>
+
+
+            <script src="~/Content/assets/plugins/knob/jquery.knob.js"></script>
+            <script>
+                $(function () {
+                    $('[data-plugin="knob"]').knob();
+                });
+            </script>
+
+            <!-- Flot Charts JavaScript -->
+            <script src="~/Content/assets/plugins/flot/excanvas.js"></script>
+            <script src="~/Content/assets/plugins/flot/jquery.flot.js"></script>
+            <script src="~/Content/assets/plugins/flot/jquery.flot.pie.js"></script>
+            <script src="~/Content/assets/plugins/flot/jquery.flot.time.js"></script>
+            <script src="~/Content/assets/plugins/flot/jquery.flot.stack.js"></script>
+            <script src="~/Content/assets/plugins/flot/jquery.flot.crosshair.js"></script>
+            <script src="~/Content/assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+
+            <!-- ============================================================== -->
+            <!-- Style switcher -->
+
+            <script type="text/javascript">
+                /*
+Template Name: ERAS Project
+Author: Uhunghama Harrison
+Email: Harrison.Uhunghama@oriental-er.com
+File: js
+*/
+                // Real Time chart
+                var data = []
+                    , totalPoints = 300;
+
+                function getRandomData() {
+                    if (data.length > 0) data = data.slice(1);
+                    // Do a random walk
+                    while (data.length < totalPoints) {
+                        var prev = data.length > 0 ? data[data.length - 1] : 50
+                            , y = prev + Math.random() * 10 - 5;
+                        if (y < 0) {
+                            y = 0;
+                        }
+                        else if (y > 100) {
+                            y = 100;
+                        }
+                        data.push(y);
+                    }
+                    // Zip the generated y values with the x values
+                    var res = [];
+                    for (var i = 0; i < data.length; ++i) {
+                        res.push([i, data[i]])
+                    }
+                    return res;
+                }
+                // Set up the control widget
+                var updateInterval = 30;
+                $("#updateInterval").val(updateInterval).change(function () {
+                    var v = $(this).val();
+                    if (v && !isNaN(+v)) {
+                        updateInterval = +v;
+                        if (updateInterval < 1) {
+                            updateInterval = 1;
+                        }
+                        else if (updateInterval > 3000) {
+                            updateInterval = 3000;
+                        }
+                        $(this).val("" + updateInterval);
+                    }
+                });
+                var plot = $.plot("#YearlyBackAllocationQo", @Html.Raw(Json.Encode(ViewBag.BackAllocationQo)), {
+                    series: {
+                        shadowSize: 0 // Drawing is faster without shadows
+                    }
+                    , yaxis: {
+                        min: 0
+                        , max: 100
+                    }
+                    , xaxis: {
+                        show: false
+                    }
+                    , colors: ["#26c6da"]
+                    , grid: {
+                        color: "#AFAFAF"
+                        , hoverable: true
+                        , borderWidth: 0
+                        , backgroundColor: '#FFF'
+                    }
+                    , tooltip: true
+                    , tooltipOpts: {
+                        content: "Y: %y"
+                        , defaultTheme: false
+                    }
+                });
+
+                function update() {
+                    plot.setData([getRandomData()]);
+                    // Since the axes don't change, we don't need to call plot.setupGrid()
+                    plot.draw();
+                    setTimeout(update, updateInterval);
+                }
+                update();
+                //Flot Line Chart
+                $(document).ready(function () {
+                    console.log("document ready");
+                    var offset = 0;
+                    plot();
+
+                    function plot() {
+                        var sin = @Html.Raw(Json.Encode(ViewBag.yearlyQlink))
+                            , cos = @Html.Raw(Json.Encode(ViewBag.yearlyQlest));
+
+                        var options = {
+                            series: {
+                                lines: {
+                                    show: true
+                                }
+                                , points: {
+                                    show: true
+                                }
+                            }
+                            , grid: {
+                                hoverable: true //IMPORTANT! this is needed for tooltip to work
+                            }
+                            , yaxis: {
+                                min: -1.2
+                                , max: 1.2
+                            }
+                            , colors: ["#009efb", "#26c6da"]
+                            , grid: {
+                                color: "#AFAFAF"
+                                , hoverable: true
+                                , borderWidth: 0
+                                , backgroundColor: '#FFF'
+                            }
+                            , tooltip: true
+                            , tooltipOpts: {
+                                content: "'%s' of %x.1 is %y.4"
+                                , shifts: {
+                                    x: -60
+                                    , y: 25
+                                }
+                            }
+                        };
+                        var plotObj = $.plot($("#QlinkvsQlest"), [{
+                            data: sin
+                            , label: "Qlink"
+                            ,
+                        }, {
+                            data: cos
+                            , label: "Qlest"
+                        }], options);
+                    }
+                });
+                //Flot Pie Chart
+                $(function () {
+                    var data = @ViewBag.donutIndicatorChart;
+                    var plotObj = $.plot($("#backAllocationParameterPie"), data, {
+                        series: {
+                            pie: {
+                                innerRadius: 0.5
+                                , show: true
+                            }
+                        }
+                        , grid: {
+                            hoverable: true
+                        }
+                        , color: null
+                        , tooltip: true
+                        , tooltipOpts: {
+                            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                            shifts: {
+                                x: 20
+                                , y: 0
+                            }
+                            , defaultTheme: false
+                        }
+                    });
+                });
+                //Flot Moving Line Chart
+                $(function () {
+                    var container = $("#backAllocationQw");
+                    // Determine how many data points to keep based on the placeholder's initial size;
+                    // this gives us a nice high-res plot while avoiding more than one point per pixel.
+                    var maximum = container.outerWidth() / 2 || 300;
+                    //
+                    var mydata = @Html.Raw(Json.Encode(ViewBag.BackAllocationQw));
+
+                    //
+                    series = [{
+                        data: mydata
+                        , lines: {
+                            fill: true
+                        }
+                    }];
+                    //
+                    var plot = $.plot(container, series, {
+                        colors: ["#26c6da"]
+                        , grid: {
+                            borderWidth: 0
+                            , minBorderMargin: 20
+                            , labelMargin: 10
+                            , backgroundColor: {
+                                colors: ["#fff", "#fff"]
+                            }
+                            , margin: {
+                                top: 8
+                                , bottom: 20
+                                , left: 20
+                            }
+                            , markings: function (axes) {
+                                var markings = [];
+                                var xaxis = axes.xaxis;
+                                for (var x = Math.floor(xaxis.min); x < xaxis.max; x += xaxis.tickSize * 1) {
+                                    markings.push({
+                                        xaxis: {
+                                            from: x
+                                            , to: x + xaxis.tickSize
+                                        }
+                                        , color: "#fff"
+                                    });
+                                }
+                                return markings;
+                            }
+                        }
+                        , xaxis: {
+                            tickFormatter: function () {
+                                return "";
+                            }
+                        }
+                        , yaxis: {
+                            min: 0
+                            , max: 110
+                        }
+                        , legend: {
+                            show: true
+                        }
+                    });
+                    // Update the random dataset at 25FPS for a smoothly-animating chart
+                    setInterval(function updateRandom() {
+                        series[0].data = getRandomData();
+                        plot.setData(series);
+                        plot.draw();
+                    }, 40);
+                });
+                //Flot Bar Chart
+                $(function () {
+                    var barOptions = {
+                        series: {
+                            bars: {
+                                show: true
+                                , barWidth: 43200000
+                            }
+                        }
+                        , xaxis: {
+                            mode: "time"
+                            , timeformat: "%m/%d"
+                            , minTickSize: [2, "day"]
+                        }
+                        , grid: {
+                            hoverable: true
+                        }
+                        , legend: {
+                            show: false
+                        }
+                        , grid: {
+                            color: "#AFAFAF"
+                            , hoverable: true
+                            , borderWidth: 0
+                            , backgroundColor: '#FFF'
+                        }
+                        , tooltip: true
+                        , tooltipOpts: {
+                            content: "x: %x, y: %y"
+                        }
+                    };
+                    var barData = {
+                        label: "bar"
+                        , color: "#009efb"
+                        , data: @ViewBag.flotBackAllocationFlowHrs;
+                    };
+                    $.plot($("#backAllocationFlowHrs"), [barData], barOptions);
+                });
+                // sales bar chart
+                $(function () {
+                    //some data
+                    var d1 = @Html.Raw(Json.Encode(ViewBag.yearlyAssumedGOR));
+                    var d2 = @Html.Raw(Json.Encode(ViewBag.yearlyActualGOR));
+                    var d3 = @Html.Raw(Json.Encode(ViewBag.yearlyBOPD));
+                    var ds = new Array();
+                    ds.push({
+                        label: "Assumed GOR"
+                        , data: d1
+                        , bars: {
+                            order: 1
+                        }
+                    });
+                    ds.push({
+                        label: "Actual GOR"
+                        , data: d2
+                        , bars: {
+                            order: 2
+                        }
+                    });
+                    ds.push({
+                        label: "BOPD"
+                        , data: d3
+                        , bars: {
+                            order: 3
+                        }
+                    });
+                    var stack = 0
+                        , bars = true
+                        , lines = true
+                        , steps = true;
+                    var options = {
+                        bars: {
+                            show: true
+                            , barWidth: 0.2
+                            , fill: 1
+                        }
+                        , grid: {
+                            show: true
+                            , aboveData: false
+                            , labelMargin: 5
+                            , axisMargin: 0
+                            , borderWidth: 1
+                            , minBorderMargin: 5
+                            , clickable: true
+                            , hoverable: true
+                            , autoHighlight: false
+                            , mouseActiveRadius: 20
+                            , borderColor: '#f5f5f5'
+                        }
+                        , series: {
+                            stack: stack
+                        }
+                        , legend: {
+                            position: "ne"
+                            , margin: [0, 0]
+                            , noColumns: 0
+                            , labelBoxBorderColor: null
+                            , labelFormatter: function (label, series) {
+                                // just add some space to labes
+                                return '' + label + '&nbsp;&nbsp;';
+                            }
+                            , width: 30
+                            , height: 5
+                        }
+                        , yaxis: {
+                            tickColor: '#f5f5f5'
+                            , font: {
+                                color: '#bdbdbd'
+                            }
+                        }
+                        , xaxis: {
+                            tickColor: '#f5f5f5'
+                            , font: {
+                                color: '#bdbdbd'
+                            }
+                        }
+                        , colors: ["#4F5467", "#009efb", "#26c6da"]
+                        , tooltip: true, //activate tooltip
+                        tooltipOpts: {
+                            content: "%s : %y.0"
+                            , shifts: {
+                                x: -30
+                                , y: -50
+                            }
+                        }
+                    };
+                    $.plot($(".GORvsBOPD"), ds, options);
+                });
+            </script>
+
+            <script type="text/javascript">
+                /*
+Template Name: ERAS
+Author: Uhunghama Harrison
+Email: Harrison.Uhunghama@oriental-er.com
+File: js
+*/
+                $(function () {
+                    "use strict";
+                    // ==============================================================
+                    // Sales overview
+                    // ==============================================================
+                    Morris.Area({
+                        element: 'BOPDvsBPLD',
+                        data: @ViewBag.morrisdatacompare,
+                        xkey: 'period',
+                        ykeys: ['BPLD', 'BOPD', 'BSW'],
+                        labels: ['BPLD', 'BOPD', 'BSW'],
+                        pointSize: 3,
+                        fillOpacity: 0,
+                        pointStrokeColors: ['#1976d2', '#26c6da', '#1976d2'],
+                        behaveLikeLine: true,
+                        gridLineColor: '#e0e0e0',
+                        lineWidth: 5,
+                        hideHover: 'auto',
+                        lineColors: ['#1976d2', '#26c6da', '#1976d2'],
+                        resize: true
+
+                    });
+
+                    // ==============================================================
+                    // Sales overview
+                    // ==============================================================
+                    // ==============================================================
+                    // Download count
+                    // ==============================================================
+                    var sparklineLogin = function () {
+                        $('.spark-count').sparkline([4, 5, 0, 10, 9, 12, 4, 9, 4, 5, 3, 10, 9, 12, 10, 9], {
+                            type: 'bar',
+                            width: '100%',
+                            height: '70',
+                            barWidth: '2',
+                            resize: true,
+                            barSpacing: '6',
+                            barColor: 'rgba(255, 255, 255, 0.3)'
+                        });
+
+                        $('.spark-count2').sparkline([20, 40, 30], {
+                            type: 'pie',
+                            height: '90',
+                            resize: true,
+                            sliceColors: ['#1cadbf', '#1f5f67', '#ffffff']
+                        });
+                    }
+                    var sparkResize;
+
+                    sparklineLogin();
+
+
+                });
+            </script>
+
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    var sparklineLogin = function () {
+                        $("#sparkline1").sparkline([5, 6, 2, 8, 9, 4, 7, 10, 11, 12, 10], {
+                            type: 'bar',
+                            height: '45',
+                            barWidth: 7,
+                            barSpacing: 4,
+                            barColor: '#55ce63'
+
+                        });
+
+                        $('#sparkline2').sparkline([20, 40, 30], {
+                            type: 'pie',
+                            width: '50',
+                            height: '45',
+                            resize: true,
+                            sliceColors: ['#009efb', '#55ce63', '#f1f2f7']
+                        });
+
+
+                        $('#sparkline3').sparkline([5, 6, 2, 9, 4, 7, 10, 12], {
+                            type: 'bar',
+                            height: '164',
+                            barWidth: '7',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#f62d51'
+                        });
+
+
+                        $("#sparkline4").sparkline([0, 23, 43, 35, 44, 45, 56, 37, 40, 45, 56, 7, 10], {
+                            type: 'line',
+                            width: '120',
+                            height: '45',
+                            lineColor: '#f62d51',
+                            fillColor: 'transparent',
+                            spotColor: '#f62d51',
+                            minSpotColor: undefined,
+                            maxSpotColor: undefined,
+                            highlightSpotColor: undefined,
+                            highlightLineColor: undefined
+                        });
+
+                        $('#sparkline5').sparkline([15, 23, 55, 35, 54, 45, 66, 47, 30], {
+                            type: 'line',
+                            width: '100%',
+                            height: '160',
+                            chartRangeMax: 50,
+                            resize: true,
+                            lineColor: '#009efb',
+                            fillColor: 'rgba(19, 218, 254, 0.3)',
+                            highlightLineColor: 'rgba(0,0,0,.1)',
+                            highlightSpotColor: 'rgba(0,0,0,.2)',
+                        });
+
+                        $('#sparkline5').sparkline([0, 13, 10, 14, 15, 10, 18, 20, 0], {
+                            type: 'line',
+                            width: '100%',
+                            height: '160',
+                            chartRangeMax: 40,
+                            lineColor: '#7460ee',
+                            fillColor: 'rgba(97, 100, 193, 0.3)',
+                            composite: true,
+                            resize: true,
+                            highlightLineColor: 'rgba(0,0,0,.1)',
+                            highlightSpotColor: 'rgba(0,0,0,.2)',
+                        });
+                        $('#sparkline6').sparkline([5, 6, 2, 8, 9, 4, 7, 10, 11, 12, 10], {
+                            type: 'bar',
+                            height: '45',
+                            barWidth: '7',
+                            barSpacing: '4',
+                            barColor: '#009efb'
+                        });
+                        $("#sparkline7").sparkline([0, 2, 8, 6, 8, 5, 6, 4, 8, 6, 4, 2], {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#ffca4a',
+                            fillColor: '#ffca4a',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#4f4f4f'
+                        });
+                        $("#weekQlest").sparkline(@Html.Raw(Json.Encode(ViewBag.weekQlest)), {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#55ce63',
+                            fillColor: '#55ce63',
+                            maxSpotColor: '#55ce63',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#55ce63'
+                        });
+
+                        $("#weekQlink").sparkline(@Html.Raw(Json.Encode(ViewBag.weekQlink)), {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#009efb',
+                            fillColor: '#009efb',
+                            minSpotColor: '#009efb',
+                            maxSpotColor: '#009efb',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#009efb'
+                        });
+
+                        $("#weekQo").sparkline(@Html.Raw(Json.Encode(ViewBag.weekQo)), {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#7460ee',
+                            fillColor: '#7460ee',
+                            maxSpotColor: '#7460ee',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#7460ee'
+                        });
+                        $('#sparkline11').sparkline([20, 40, 30], {
+                            type: 'pie',
+                            height: '200',
+                            resize: true,
+                            sliceColors: ['#009efb', '#55ce63', '#f1f2f7']
+                        });
+
+                        $("#sparkline12").sparkline([5, 6, 2, 8, 9, 4, 7, 10, 11, 12, 10, 4, 7, 10], {
+                            type: 'bar',
+                            height: '200',
+                            barWidth: 10,
+                            barSpacing: 7,
+                            barColor: '#99d683'
+                        });
+
+                        $('#sparkline13').sparkline([5, 6, 2, 9, 4, 7, 10, 12, 4, 7, 10], {
+                            type: 'bar',
+                            height: '200',
+                            barWidth: '10',
+                            resize: true,
+                            barSpacing: '7',
+                            barColor: '#f96262'
+                        });
+                        $('#sparkline13').sparkline([5, 6, 2, 9, 4, 7, 10, 12, 4, 7, 10], {
+                            type: 'line',
+                            height: '200',
+                            lineColor: '#f96262',
+                            fillColor: 'transparent',
+                            composite: true,
+                            highlightLineColor: 'rgba(0,0,0,.1)',
+                            highlightSpotColor: 'rgba(0,0,0,.2)'
+                        });
+
+
+                        $("#sparkline14").sparkline([0, 23, 43, 35, 44, 45, 56, 37, 40, 45, 56, 7, 10], {
+                            type: 'line',
+                            width: '100%',
+                            height: '200',
+                            lineColor: '#fff',
+                            fillColor: 'transparent',
+                            spotColor: '#fff',
+                            minSpotColor: undefined,
+                            maxSpotColor: undefined,
+                            highlightSpotColor: undefined,
+                            highlightLineColor: undefined
+                        });
+
+                        $('#sparkline15').sparkline([5, 6, 2, 8, 9, 4, 7, 10, 11, 12, 10, 9, 4, 7], {
+                            type: 'bar',
+                            height: '200',
+                            barWidth: '10',
+                            barSpacing: '10',
+                            barColor: '#009efb'
+                        });
+
+                        $('#sparkline16').sparkline([15, 23, 55, 35, 54, 45, 66, 47, 30], {
+                            type: 'line',
+                            width: '100%',
+                            height: '200',
+                            chartRangeMax: 50,
+                            resize: true,
+                            lineColor: '#009efb',
+                            fillColor: 'rgba(19, 218, 254, 0.3)',
+                            highlightLineColor: 'rgba(0,0,0,.1)',
+                            highlightSpotColor: 'rgba(0,0,0,.2)',
+                        });
+
+                        $('#sparkline16').sparkline([0, 13, 10, 14, 15, 10, 18, 20, 0], {
+                            type: 'line',
+                            width: '100%',
+                            height: '200',
+                            chartRangeMax: 40,
+                            lineColor: '#7460ee',
+                            fillColor: 'rgba(97, 100, 193, 0.3)',
+                            composite: true,
+                            resize: true,
+                            highlightLineColor: 'rgba(0,0,0,.1)',
+                            highlightSpotColor: 'rgba(0,0,0,.2)',
+                        });
+
+                        $('#weekflowhours').sparkline(@Html.Raw(Json.Encode(ViewBag.weekFLOWHRS)), {
+type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#55ce63'
+                        });
+
+                        $('#weekGasAllocation').sparkline(@Html.Raw(Json.Encode(ViewBag.weekGasAllocation)), {
+                                type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#7460ee'
+                        });
+
+                        $('#weekQgActual').sparkline(@Html.Raw(Json.Encode(ViewBag.weekQgActual)), {
+                                type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#03a9f3'
+                        });
+
+                        $('#weekQgPotential').sparkline(@Html.Raw(Json.Encode(ViewBag.weekQgPotential)), {
+                                type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#f62d51'
+                        });
+
+                            };
+                            var sparkResize;
+
+                    $(window).resize(function (e) {
+                                clearTimeout(sparkResize);
+                                sparkResize = setTimeout(sparklineLogin, 500);
+                            });
+                    sparklineLogin();
+
+                        });
+            </script>
+        }

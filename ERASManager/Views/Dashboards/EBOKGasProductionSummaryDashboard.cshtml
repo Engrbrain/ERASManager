@@ -1,0 +1,456 @@
+﻿
+@{
+    ViewBag.Title = "EBOKGasProductionSummaryDashboard";
+}
+@section pagecss
+            {
+
+    <link href="~/Content/assets/plugins/morrisjs/morris.css" rel="stylesheet" />
+}
+
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">EBOK Gas Production Summary</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">Charts</li>
+                <li class="breadcrumb-item active">EBOK Gas Production Summary</li>
+            </ol>
+        </div>
+        <div class="">
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">2-Phase Seperator</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="twoPhaseSeperator"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">@ViewBag.TwoPhaseSeperator</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Test Seperator</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="testSeperator"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">@ViewBag.TestSeperator</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Prod. Seperator</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="prodSeperator"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">@ViewBag.ProdSeperator</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">WFB Allo. Gas</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="wFBAllocatedGas"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-down text-danger"></i> <span class="text-danger">@ViewBag.WFBAllocatedGas</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Gas Lift</h4>
+                        <ul class="list-inline text-right">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>CFB Gas Lift</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>WFB Gas Lift</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-success"></i>Utilization Total</h5>
+                            </li>
+                        </ul>
+                        <div id="GasLift"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Injected Gas</h4>
+                        <ul class="list-inline text-right">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>Calculated Injected Gas</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>Metered Injected Gas</h5>
+                            </li>
+                        </ul>
+                        <div id="InjectedGas"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Fuel Gas KOD</h4>
+                        <div id="FuelGasKOD"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Gas Allocation Rev</h4>
+                        <div id="GasAllocationRev"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Gas Flared</h4>
+                        <div id="GasFlared"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-12" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Extra Area Chart</h4>
+                        <ul class="list-inline text-center m-t-40">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>Site A</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>Site B</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-success"></i>Site C</h5>
+                            </li>
+                        </ul>
+                        <div id="extra-area-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Gas Lifts <small class="pull-right text-success"><i class="fa fa-sort-asc"></i> @ViewBag.TotalGasLift Total Gas Lift</small></h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>WFB Gas Lift</h6>
+                                <b>@ViewBag.WFBGasLift </b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>CFB Gas Lift</h6>
+                                <b>@ViewBag.CFBGasLift</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>FuelGasKOD</h6>
+                                <b>@ViewBag.FuelGasKOD</b>
+                            </div>
+                        </div>
+                        <div id="totalGasLift"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Gas Flare</h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>HPFlare</h6>
+                                <b>@ViewBag.HPFlare</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>LPFlare</h6>
+                                <b>@ViewBag.LPFlare</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>WFBGasFlare</h6>
+                                <b>@ViewBag.WFBGasFlare</b>
+                            </div>
+                        </div>
+                        <div id="wFBGasFlare"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Gas Utilization</h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>GT Compressor</h6>
+                                <b>@ViewBag.GTCompressor</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>Cal. Inj. Gas</h6>
+                                <b>@ViewBag.CalInjGas</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>Metered Inj. Gas</h6>
+                                <b>@ViewBag.MeteredInjGas</b>
+                            </div>
+                        </div>
+                        <div id="meteredInjGas"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        @section pagescript
+            {
+            <script src="~/Content/assets/plugins/raphael/raphael-min.js"></script>
+            <script src="~/Content/assets/plugins/morrisjs/morris.js"></script>
+
+            <script src="~/Content/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var sparklineLogin = function () {
+                        var twoPhaseSeperator = @Html.Raw(Json.Encode(ViewBag.weekTwoPhaseSeperator));
+                        $("#twoPhaseSeperator").sparkline(twoPhaseSeperator, {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#55ce63',
+                            fillColor: '#55ce63',
+                            maxSpotColor: '#55ce63',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#55ce63'
+                        });
+
+                        var testSeperator = @Html.Raw(Json.Encode(ViewBag.weekTestSeperator));
+                        $("#testSeperator").sparkline(testSeperator, {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#7460ee',
+                            fillColor: '#7460ee',
+                            maxSpotColor: '#7460ee',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#7460ee'
+                        });
+
+                        var prodSeperator = @Html.Raw(Json.Encode(ViewBag.weekProdSeperator));
+                        $('#prodSeperator').sparkline(prodSeperator, {
+                            type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#55ce63'
+                        });
+
+                        var wFBAllocatedGas = @Html.Raw(Json.Encode(ViewBag.weekWFBAllocatedGas));
+                        $('#wFBAllocatedGas').sparkline(wFBAllocatedGas, {
+                            type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#7460ee'
+                        });
+
+                        var totalGasLift = @Html.Raw(Json.Encode(ViewBag.weekTotalGasLift));
+                        $('#totalGasLift').sparkline(totalGasLift, {
+                            type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#03a9f3'
+                        });
+
+                        var wFBGasFlare = @Html.Raw(Json.Encode(ViewBag.weekWFBGasFlare));
+                        $('#wFBGasFlare').sparkline(wFBGasFlare, {
+                            type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#f62d51'
+                        });
+
+                        var meteredInjGas = @Html.Raw(Json.Encode(ViewBag.weekMeteredInjGas));
+                        $("#meteredInjGas").sparkline(meteredInjGas, {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#009efb',
+                            fillColor: '#009efb',
+                            minSpotColor: '#009efb',
+                            maxSpotColor: '#009efb',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#009efb'
+                        });
+                    }
+
+                    var sparkResize;
+
+                    $(window).resize(function (e) {
+                        clearTimeout(sparkResize);
+                        sparkResize = setTimeout(sparklineLogin, 500);
+                    });
+                    sparklineLogin();
+
+                });
+            </script>
+
+            <script type="text/javascript">
+                $(function () {
+                    "use strict";
+                    var GasLiftCompare = @Html.Raw(ViewBag.GasLiftCompare);
+                    var GasInjectionCompare = @Html.Raw(ViewBag.GasInjectionCompare);
+                    var FuelGasKODRep = @Html.Raw(ViewBag.FuelGasKODRep);
+                    var GasFlaredCompare = @Html.Raw(ViewBag.GasFlaredCompare);
+
+                    Morris.Area({
+                        element: 'GasLift',
+                        data: GasLiftCompare,
+                        xkey: 'period',
+                        ykeys: ['CFBGasLift', 'WFBGasLift', 'UtilizationTotal'],
+                        labels: ['CFB Gas Lift', 'WFB Gas Lift', 'Total Utilization'],
+                        pointSize: 3,
+                        fillOpacity: 0,
+                        pointStrokeColors: ['#55ce63', '#009efb', '#2f3d4a'],
+                        behaveLikeLine: true,
+                        gridLineColor: '#e0e0e0',
+                        lineWidth: 3,
+                        hideHover: 'auto',
+                        lineColors: ['#55ce63', '#009efb', '#2f3d4a'],
+                        resize: true
+
+                    });
+
+                    Morris.Area({
+                        element: 'InjectedGas',
+                        data: GasInjectionCompare,
+                        xkey: 'period',
+                        ykeys: ['CalculatedInjGas', 'MeteredInjGas'],
+                        labels: ['Calculated Inj. Gas', 'Metered Inj. Gas'],
+                        pointSize: 0,
+                        fillOpacity: 0.4,
+                        pointStrokeColors: ['#b4becb', '#009efb'],
+                        behaveLikeLine: true,
+                        gridLineColor: '#e0e0e0',
+                        lineWidth: 0,
+                        smooth: false,
+                        hideHover: 'auto',
+                        lineColors: ['#b4becb', '#009efb'],
+                        resize: true
+
+                    });
+
+
+                    // LINE CHART
+                    var line = new Morris.Line({
+                        element: 'FuelGasKOD',
+                        resize: true,
+                        data: FuelGasKODRep,
+                        xkey: 'period',
+                        ykeys: ['FuelGasKOD'],
+                        labels: ['Fuel Gas KOD'],
+                        gridLineColor: '#eef0f2',
+                        lineColors: ['#009efb'],
+                        lineWidth: 1,
+                        hideHover: 'auto'
+                    });
+                    // Morris donut chart
+
+                    Morris.Donut({
+                        element: 'GasAllocationRev',
+                        data: [{
+                            label: "WFB Process Total",
+                            value: @Html.Raw(ViewBag.WFBProcessTotal),
+
+                        }, {
+                                label: "TOTAL Gas Lift",
+                            value: @Html.Raw(ViewBag.TOTALGasLift)
+                        }, {
+                                label: "GAS Utilization Total",
+                                value: @Html.Raw(ViewBag.GASUtilizationTotal)
+                        },
+                        {
+                            label: "Total Metered Gas Flared",
+                                value: @Html.Raw(ViewBag.TotalMeteredGasFlared)
+                        }],
+                        resize: true,
+                        colors: ['#009efb', '#55ce63', '#2f3d4a']
+                    });
+
+                    // Morris bar chart
+                    Morris.Bar({
+                        element: 'GasFlared',
+                        data: GasFlaredCompare,
+                        xkey: 'period',
+                        ykeys: ['HPFLARE', 'LPFLARE', 'WFBGasFlared'],
+                        labels: ['HP FLARE', 'LP FLARE', 'WFB Gas Flared'],
+                        barColors: ['#55ce63', '#2f3d4a', '#009efb'],
+                        hideHover: 'auto',
+                        gridLineColor: '#eef0f2',
+                        resize: true
+                    });
+                });
+            </script>
+
+        }

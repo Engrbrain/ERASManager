@@ -1,0 +1,98 @@
+﻿@model ERASManager.Models.EBOKTranformedData.WaterInjectorQuality
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WaterInjectorQuality</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IndicatorDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndicatorDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SWLPumpInlet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SWLPumpInlet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticlesUpstream)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticlesUpstream)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticlesDownStream)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticlesDownStream)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

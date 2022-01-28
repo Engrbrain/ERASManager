@@ -1,0 +1,122 @@
+﻿@model ERASManager.Models.EBOKTranformedData.WaterInjectorRateLineItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WaterInjectorRateLineItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Well)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Well)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IndicatorDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndicatorDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChokeSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChokeSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FLP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FLP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INJRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INJRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CumINJRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CumINJRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

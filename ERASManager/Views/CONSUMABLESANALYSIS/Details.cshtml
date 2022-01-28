@@ -1,0 +1,114 @@
+﻿@model ERASManager.Models.EBOKDailyReport.CONSUMABLESANALYSIS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CONSUMABLESANALYSIS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parameters)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parameters)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrevROB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrevROB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produced)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produced)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Received)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Received)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DailyConsumption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DailyConsumption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ROB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsumptionYTD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConsumptionYTD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayOftheWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayOftheWeek)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

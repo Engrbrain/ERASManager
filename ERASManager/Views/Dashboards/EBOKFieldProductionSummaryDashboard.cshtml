@@ -1,0 +1,560 @@
+﻿@{
+    ViewBag.Title = "EBOKFieldProductionSummaryDashboard";
+}
+
+@section pagecss
+            {
+
+<link href="~/Content/assets/plugins/morrisjs/morris.css" rel="stylesheet" />
+}
+
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">EBOK Field Production Summary Dashboard</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">Dashboard</li>
+                <li class="breadcrumb-item active">EBOK Field Production Summary Dashboard</li>
+            </ol>
+        </div>
+        <div class="">
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Produced Oil</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="prodoil"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">@ViewBag.Prodoil</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Cum Oil Prod</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="cumoilprod"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple"> @ViewBag.ProdWater</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Produced Gas</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="prodgas"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">@ViewBag.ProdGas </span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Ullage Measurement</h4>
+                        <ul class="list-inline two-part">
+                            <li>
+                                <div id="ullage"></div>
+                            </li>
+                            <li class="text-right"><i class="ti-arrow-down text-danger"></i> <span class="text-danger">@ViewBag.ullage</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Gas Data <small class="pull-right text-success"><i class="fa fa-sort-asc"></i> @ViewBag.CumGas Cum Gas Produced</small></h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>WFB Allo Gas</h6>
+                                <b>@ViewBag.WFBAllocatedGas</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>Total Prod Gas</h6>
+                                <b>@ViewBag.TotalProducedGas</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>Gas Lift</h6>
+                                <b>@ViewBag.GasLift</b>
+                            </div>
+                        </div>
+                        <div id="totalprodgas"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Produced Water</h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>Prod Water</h6>
+                                <b>@ViewBag.ProdWater</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>Cum Water</h6>
+                                <b>@ViewBag.CumGas</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>Oil-in-water</h6>
+                                <b>@ViewBag.OilinWater</b>
+                            </div>
+                        </div>
+                        <div id="prodwater"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Export Meters</h4>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <h6>G.Crude</h6>
+                                <b>@ViewBag.GCrude</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>N.Crude</h6>
+                                <b>@ViewBag.NCrude</b>
+                            </div>
+                            <div class="stat-item">
+                                <h6>Pumpable Cargo</h6>
+                                <b>@ViewBag.pumpablecargo</b>
+                            </div>
+                        </div>
+                        <div id="pumpablecargo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Export Reading Analysis</h4>
+                        <ul class="list-inline text-right">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>Gross Crude</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>Net Crude</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-success"></i>Pumpable Cargo</h5>
+                            </li>
+                        </ul>
+                        <div id="exportcompare"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Water vs Oil</h4>
+                        <ul class="list-inline text-right">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>Prod Oil</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>Prod Water</h5>
+                            </li>
+                        </ul>
+                        <div id="prodcompare"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">BSW</h4>
+                        <div id="morris-line-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-6" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Oil/Gas/Water</h4>
+                        <div id="morris-donut-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-12" style="display:none">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Field GOR Trend</h4>
+                        <div id="morris-bar-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+            <!-- column -->
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Cummulative Oil/Water/Gas</h4>
+                        <ul class="list-inline text-center m-t-40">
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-info"></i>Cum. Oil</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-inverse"></i>Cum. Water</h5>
+                            </li>
+                            <li>
+                                <h5><i class="fa fa-circle m-r-5 text-success"></i>Cum.Gas</h5>
+                            </li>
+                        </ul>
+                        <div id="cumcompare"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- column -->
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">BSW</h4>
+                        <div id="bsw" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Prod Water/Field Water/Export Water Cut</h4>
+                        <div id="weekpie" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">FieldGOR</h4>
+                        <div id="fieldgor" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card card-inverse card-primary">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">API</h4>
+                        <div id="ebokapi"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Virin Prem Stock Balance</h4>
+                        <div id="stockbal" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body analytics-info">
+                        <h4 class="card-title">Water Overboard/Free Water Received</h4>
+                        <div id="weekline" class="text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        @section pagescript
+        {
+        <script src="~/Content/assets/plugins/raphael/raphael-min.js"></script>
+        <script src="~/Content/assets/plugins/morrisjs/morris.js"></script>
+        <script src="~/Content/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <script type="text/javascript">
+                // Dashboard 1 Morris-chart
+                $(function () {
+                    "use strict";
+                    var compareCum = @Html.Raw(ViewBag.CumReading);
+                    var compareExport = @Html.Raw(ViewBag.ExportReading);
+                    var compareProd = @Html.Raw(ViewBag.ProdCompare);
+                    Morris.Area({
+                        element: 'exportcompare',
+                        data: compareExport,
+                        xkey: 'period',
+                        ykeys: ['GrossCrude', 'NetCrude', 'UllageMeasurement'],
+                        labels: ['Gross Crude', 'Net Crude', 'Ullage Measurement'],
+                        pointSize: 3,
+                        fillOpacity: 0,
+                        pointStrokeColors: ['#55ce63', '#009efb', '#2f3d4a'],
+                        behaveLikeLine: true,
+                        gridLineColor: '#e0e0e0',
+                        lineWidth: 3,
+                        hideHover: 'auto',
+                        lineColors: ['#55ce63', '#009efb', '#2f3d4a'],
+                        resize: true
+                    });
+
+                    Morris.Area({
+                        element: 'prodcompare',
+                        data: compareProd,
+                        xkey: 'period',
+                        ykeys: ['ProdOil', 'ProdWater'],
+                        labels: ['ProdOil', 'ProdWater'],
+                        pointSize: 0,
+                        fillOpacity: 0.4,
+                        pointStrokeColors: ['#89A3C6', '#009efb'],
+                        behaveLikeLine: true,
+                        gridLineColor: '#e0e0e0',
+                        lineWidth: 0,
+                        smooth: false,
+                        hideHover: 'auto',
+                        lineColors: ['#89A3C6', '#009efb'],
+                        resize: true
+
+                    });
+
+                    // Extra chart
+                    Morris.Area({
+                        element: 'cumcompare',
+                        data: compareCum,
+                        lineColors: ['#FF4000', '#FFC926', '#009efb'],
+                        xkey: 'period',
+                        ykeys: ['CumOil', 'CumWater', 'CumGas'],
+                        labels: ['Cum Oil', 'Cum Water', 'Cum Gas'],
+                        pointSize: 0,
+                        lineWidth: 0,
+                        resize: true,
+                        fillOpacity: 0.8,
+                        behaveLikeLine: true,
+                        gridLineColor: '#e0e0e0',
+                        hideHover: 'auto'
+
+                    });
+                });
+        </script>
+
+        <script type="text/javascript">
+                $(document).ready(function () {
+                    var sparklineLogin = function () {
+                        var totalprodgaslist = @Html.Raw(Json.Encode(ViewBag.weekTotalProdGas));
+                        $("#totalprodgas").sparkline(totalprodgaslist, {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#55ce63',
+                            fillColor: '#55ce63',
+                            maxSpotColor: '#55ce63',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#55ce63'
+                        });
+
+                        var prodwaterlist = @Html.Raw(Json.Encode(ViewBag.weekTotalProdGas));
+                        $("#prodwater").sparkline(prodwaterlist, {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#009efb',
+                            fillColor: '#009efb',
+                            minSpotColor: '#009efb',
+                            maxSpotColor: '#009efb',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#009efb'
+                        });
+
+                        var pumpablecargolist = @Html.Raw(Json.Encode(ViewBag.weekpumpablecargo));
+                        $("#pumpablecargo").sparkline(pumpablecargolist, {
+                            type: 'line',
+                            width: '100%',
+                            height: '50',
+                            lineColor: '#7460ee',
+                            fillColor: '#7460ee',
+                            maxSpotColor: '#7460ee',
+                            highlightLineColor: 'rgba(0, 0, 0, 0.2)',
+                            highlightSpotColor: '#7460ee'
+                        });
+
+                        var weekpielist = @Html.Raw(Json.Encode(ViewBag.weekpie));
+                        $('#weekpie').sparkline(weekpielist, {
+                            type: 'pie',
+                            height: '200',
+                            resize: true,
+                            sliceColors: ['#009efb', '#55ce63', '#f1f2f7']
+                        });
+
+                        var bswlist = @Html.Raw(Json.Encode(ViewBag.weekbsw));
+                        $("#bsw").sparkline(bswlist, {
+                            type: 'bar',
+                            height: '200',
+                            barWidth: 10,
+                            barSpacing: 7,
+                            barColor: '#99d683'
+                        });
+
+                        var fieldgorlist = @Html.Raw(Json.Encode(ViewBag.weekfieldgor));
+                        $('#fieldgor').sparkline(fieldgorlist, {
+                            type: 'bar',
+                            height: '200',
+                            barWidth: '10',
+                            resize: true,
+                            barSpacing: '7',
+                            barColor: '#f96262'
+                        });
+                        $('#fieldgor').sparkline(fieldgorlist, {
+                            type: 'line',
+                            height: '200',
+                            lineColor: '#f96262',
+                            fillColor: 'transparent',
+                            composite: true,
+                            highlightLineColor: 'rgba(0,0,0,.1)',
+                            highlightSpotColor: 'rgba(0,0,0,.2)'
+                        });
+
+                        var ebokapilist = @Html.Raw(Json.Encode(ViewBag.weekapi));
+                        $("#ebokapi").sparkline(ebokapilist, {
+                            type: 'line',
+                            width: '100%',
+                            height: '200',
+                            lineColor: '#fff',
+                            fillColor: 'transparent',
+                            spotColor: '#fff',
+                            minSpotColor: undefined,
+                            maxSpotColor: undefined,
+                            highlightSpotColor: undefined,
+                            highlightLineColor: undefined
+                        });
+
+                        var stockballist = @Html.Raw(Json.Encode(ViewBag.weekvirinpremstock));
+                        $('#stockbal').sparkline(stockballist, {
+                            type: 'bar',
+                            height: '200',
+                            barWidth: '10',
+                            barSpacing: '10',
+                            barColor: '#009efb'
+                        });
+
+                        var wateroverboardlist = @Html.Raw(Json.Encode(ViewBag.weekwateroverboard));
+                                    var freewaterlist = @Html.Raw(Json.Encode(ViewBag.weekfreewaterreceived));
+                        $('#weekline').sparkline(freewaterlist, {
+                                    type: 'line',
+                            width: '100%',
+                            height: '200',
+                            chartRangeMax: 50,
+                            resize: true,
+                            lineColor: '#009efb',
+                            fillColor: 'rgba(19, 218, 254, 0.3)',
+                            highlightLineColor: 'rgba(0,0,0,.1)',
+                            highlightSpotColor: 'rgba(0,0,0,.2)',
+                        });
+
+                        $('#weekline').sparkline(wateroverboardlist, {
+                                type: 'line',
+                            width: '100%',
+                            height: '200',
+                            chartRangeMax: 40,
+                            lineColor: '#7460ee',
+                            fillColor: 'rgba(97, 100, 193, 0.3)',
+                            composite: true,
+                            resize: true,
+                            highlightLineColor: 'rgba(0,0,0,.1)',
+                            highlightSpotColor: 'rgba(0,0,0,.2)',
+                        });
+
+                                var prodoillist = @Html.Raw(Json.Encode(@ViewBag.weekprodoil));
+                        $('#prodoil').sparkline(prodoillist, {
+                                type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#55ce63'
+                        });
+
+                                var cumoillist = @Html.Raw(Json.Encode(ViewBag.weekcumoil));
+                        $('#cumoilprod').sparkline(cumoillist, {
+                                type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#7460ee'
+                        });
+
+                                var prodgaslist = @Html.Raw(Json.Encode(ViewBag.weekprodgas));
+                        $('#prodgas').sparkline(prodgaslist, {
+                                type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#03a9f3'
+                        });
+
+                                var ullagelist = @Html.Raw(Json.Encode(ViewBag.weekUllage));
+                        $('#ullage').sparkline(ullagelist, {
+                                type: 'bar',
+                            height: '30',
+                            barWidth: '4',
+                            resize: true,
+                            barSpacing: '5',
+                            barColor: '#f62d51'
+                        });
+                            }
+
+                            var sparkResize;
+
+                    $(window).resize(function (e) {
+                                clearTimeout(sparkResize);
+                                sparkResize = setTimeout(sparklineLogin, 500);
+                            });
+                    sparklineLogin();
+
+                        });
+        </script>
+
+
+        }
+
+

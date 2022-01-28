@@ -1,0 +1,279 @@
+﻿@model IEnumerable<ERASManager.Models.EBOKDailyReport.CFBWellData>
+
+@{
+    ViewBag.Title = "CFB Well Data-Index";
+}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Central Fault Block (CFB) Platform - Well Data</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item">CFB Well Data</li>
+                <li class="breadcrumb-item active">Data List</li>
+            </ol>
+        </div>
+        <div>
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Provisional Production Allocation Per Well (Subject to Reconciliation)</h4>
+                        <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print, Create New Daily Entry</h6>
+                        @using (Html.BeginForm("FilterReport", "CFBWellDatas", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary()
+                            <div class="row p-t-20">
+                                <div class="col-md-4">
+                                    <div class="form-group has-success">
+
+                                        <input type="date" name="StartDate" class="form-control" placeholder="Start Date" />
+                                        <small class="form-control-feedback">Start Date</small>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-4">
+                                    <div class="form-group has-success">
+
+                                        <input type="date" name="EndDate" class="form-control" placeholder="End Date" />
+                                        <small class="form-control-feedback">End Date</small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-success"><i class='fa fa-filter'></i> Filter Report</button>
+                                </div>
+                                <!--/span-->
+                            </div>
+                        }
+
+                        <p><a href="@Url.Action("Create", "CFBWellDatas")" class="btn-info"> &nbsp;Add Data&nbsp; </a>  &nbsp;&nbsp; <a href="@Url.Action("Create", "CFBWellDatas")" class="btn-success"> &nbsp;Add Data From Previous&nbsp; </a> &nbsp;&nbsp;  <a href="@Url.Action("Create", "CFBWellDatas")" class="btn-warning">&nbsp; Add From Template &nbsp;</a></p>
+                        <div class="table-responsive m-t-40">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Rsv</th>
+                                        <th>Well</th>
+                                        <th>CHOKE</th>
+                                        <th>Online Hours</th>
+                                        <th>Offline Hours</th>
+                                        <th>THP</th>
+                                        <th>FLP</th>
+                                        <th>BSW</th>
+                                        <th>Ps</th>
+                                        <th>Pwf</th>
+                                        <th>BHT</th>
+                                        <th>DP</th>
+                                        <th>OIL</th>
+                                        <th>GAS</th>
+                                        <th>WATER</th>
+                                        <th>API°</th>
+                                        <th>Pump Frequency </th>
+                                        <th>Comment</th>
+                                        <th>Date</th>
+                                        <th class="text-nowrap">Action</th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>(/64ths)</th>
+                                        <th>HH:MM</th>
+                                        <th>HH:MM</th>
+                                        <th>(psig)</th>
+                                        <th>(psig)</th>
+                                        <th>(%)</th>
+                                        <th>(psia)</th>
+                                        <th>(psia)</th>
+                                        <th>(°F)</th>
+                                        <th>(psi)</th>
+                                        <th>BOPD</th>
+                                        <th>MMSCFD</th>
+                                        <th>BWPD</th>
+                                        <th>API°</th>
+                                        <th>(Hz)</th>
+                                        <th></th>
+                                        <th class="text-nowrap"></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Rsv</th>
+                                        <th>Well</th>
+                                        <th>CHOKE</th>
+                                        <th>Online Hours</th>
+                                        <th>Offline Hours</th>
+                                        <th>THP</th>
+                                        <th>FLP</th>
+                                        <th>BSW</th>
+                                        <th>Ps</th>
+                                        <th>Pwf</th>
+                                        <th>BHT</th>
+                                        <th>DP</th>
+                                        <th>OIL</th>
+                                        <th>GAS</th>
+                                        <th>WATER</th>
+                                        <th>API°</th>
+                                        <th>Pump Frequency </th>
+                                        <th>Comment</th>
+                                        <th>Date</th>
+                                        <th class="text-nowrap">Action</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Rsv)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Well)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CHOKE)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.HOURS_Online)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.HOURS_Offline)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.THP)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FLP)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BSW)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Ps)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Pwf)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BHT)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DP)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OIL)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.GAS)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WATER)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.API)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PumpFrequency)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Comment)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ReportDate)
+                                            </td>
+
+                                            <td>
+                                                <a title="Modify CFBWellDatas" href="@Url.Action("Edit", "CFBWellDatas", new { id = item.Id})" class="btn btn-default btn-rounded btn-condensed btn-sm"><i class='fa fa-pencil'></i></a>
+                                                <a title="View CFBWellDatas" href="@Url.Action("Details", "CFBWellDatas", new { id = item.Id})" class="btn btn-default btn-rounded btn-condensed btn-sm"><i class='fa fa-desktop'></i></a>
+                                                <a title="Delete CFBWellDatas" href="@Url.Action("Delete", "CFBWellDatas", new { id = item.Id})" class="btn btn-default btn-rounded btn-condensed btn-sm"><i class='fa fa-times'></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        @section pagescript
+            {
+            <!-- This is data table -->
+            <script src="~/Content/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+            <!-- start - This is for export functionality only -->
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+            <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+            <!-- end - This is for export functionality only -->
+            <script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function(group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    $('#example23').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+            </script>
+        }

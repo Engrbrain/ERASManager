@@ -1,0 +1,42 @@
+﻿@model ERASManager.Models.EBOKDailyReport.WellTestEnrichmentData
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WellTestEnrichmentData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Well)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Well)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rsv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rsv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
